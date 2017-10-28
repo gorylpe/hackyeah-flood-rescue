@@ -9,6 +9,7 @@
 class Map {
 public:
     Map(int _width, int _height);
+    ~Map();
     Tile *getTile(int x, int y);
     int getWidth();
     int getHeight();

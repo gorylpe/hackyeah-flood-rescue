@@ -89,6 +89,12 @@ void GameManager::handleEvents() {
     }
 }
 
+void GameManager::resetMap(){
+    delete map;
+    map = MapLoader::loadMap("map1.txt");
+    ObjectManager::resetObjects();
+}
+
 void GameManager::doObjectsIteration(){
     map->update();
 }

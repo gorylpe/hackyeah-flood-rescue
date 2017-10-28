@@ -15,6 +15,8 @@ class ObjectManager {
     ObjectManager(const ObjectManager&);
     std::vector<Object*> *objects;
 
+    resetObjects();
+
 public:
     static ObjectManager& getSingleton();
     std::vector<Object*> *getObjects();

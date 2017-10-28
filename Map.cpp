@@ -79,3 +79,13 @@ void Map::changingToWater(Tile* water, Tile* notWater) {
     notWater->setHeight(water->getHeight());
 }
 
+Map::~Map() {
+    for (int i = 0; i < width; i++) {
+        for(int j = 0; j < height; ++j){
+            delete tiles[i][j];
+        }
+        delete tiles[i];
+    }
+    delete tiles;
+}
+

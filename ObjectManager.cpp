@@ -27,3 +27,11 @@ Object *ObjectManager::getObjectAt(int x, int y) {
     return nullptr;
 }
 
+long ObjectManager::resetObjects() {
+    for (int i = 0; i < objects->size(); i++) {
+         delete objects[i];
+    }
+    delete objects;
+    objects = ObjectLoader::loadObjects("objects1.txt");
+}
+
