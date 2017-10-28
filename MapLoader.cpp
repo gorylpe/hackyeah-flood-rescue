@@ -10,6 +10,18 @@ Map *MapLoader::loadMap(std::string filename) {
     file.open(filename);
     int width, height;
     file >> width >> height;
-    Map* map = new Map(width, height);
+    auto* map = new Map(width, height);
 
+    int type;
+
+    for(int i = 0; i < width; ++i){
+        for(int j = 0; j < height; ++j){
+            file >> type >> height;
+            Tile* tile = map->getTile(i, j);
+            tile->setTileType((Tile::TILETYPE)type);
+            tile->setHeight(height);
+        }
+    }
+
+    return map;
 }
