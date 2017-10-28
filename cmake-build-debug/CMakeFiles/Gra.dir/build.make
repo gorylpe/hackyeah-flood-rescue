@@ -57,6 +57,7 @@ include CMakeFiles/Gra.dir/progress.make
 include CMakeFiles/Gra.dir/flags.make
 
 CMakeFiles/Gra.dir/main.cpp.obj: CMakeFiles/Gra.dir/flags.make
+CMakeFiles/Gra.dir/main.cpp.obj: CMakeFiles/Gra.dir/includes_CXX.rsp
 CMakeFiles/Gra.dir/main.cpp.obj: ../main.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Piotr\Documents\CLionProjects\Gra\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Gra.dir/main.cpp.obj"
 	C:\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Gra.dir\main.cpp.obj -c C:\Users\Piotr\Documents\CLionProjects\Gra\main.cpp
@@ -89,6 +90,11 @@ Gra_EXTERNAL_OBJECTS =
 
 Gra.exe: CMakeFiles/Gra.dir/main.cpp.obj
 Gra.exe: CMakeFiles/Gra.dir/build.make
+Gra.exe: C:/SFML/lib/libsfml-network-d.a
+Gra.exe: C:/SFML/lib/libsfml-audio-d.a
+Gra.exe: C:/SFML/lib/libsfml-graphics-d.a
+Gra.exe: C:/SFML/lib/libsfml-window-d.a
+Gra.exe: C:/SFML/lib/libsfml-system-d.a
 Gra.exe: CMakeFiles/Gra.dir/linklibs.rsp
 Gra.exe: CMakeFiles/Gra.dir/objects1.rsp
 Gra.exe: CMakeFiles/Gra.dir/link.txt

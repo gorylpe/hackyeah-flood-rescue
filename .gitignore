@@ -67,3 +67,7 @@ fabric.properties
 .idea/sonarlint
 
 # End of https://www.gitignore.io/api/clion
+
+cmake-build-debug/openal32.dll
+cmake-build-debug/sfml-*.dll
+
