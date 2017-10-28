@@ -78,15 +78,9 @@ void GameManager::handleEvents() {
                 break;
             case sf::Event::MouseButtonPressed:
                 switch (e.mouseButton.button) {
-                    case sf::Mouse::Left: {
-                        int x = drawingManager->getViewportTileX(e.mouseButton.x);
-                        int y = drawingManager->getViewportTileY(e.mouseButton.y);
-                        Object *object = ObjectManager::getSingleton().getObjectAt(x, y);
-                        if (object != nullptr) {
-                            UIManager::getSingleton().handleClick(object);
-                        }
-                    }
-                    break;
+                    case sf::Mouse::Left:
+                        UIManager::getSingleton().handleClick(e.mouseButton.x, e.mouseButton.y);
+                        break;
                     default:
                         break;
                 }

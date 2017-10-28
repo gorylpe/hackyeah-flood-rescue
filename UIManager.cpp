@@ -3,6 +3,7 @@
 //
 
 #include "UIManager.h"
+#include "ObjectManager.h"
 #include <iostream>
 
 UIManager::UIManager() {
@@ -14,7 +15,14 @@ UIManager &UIManager::getSingleton() {
     return manager;
 }
 
-void UIManager::handleClick(Object *object) {
-    std::cout << "Received a click at (" << object->getX() << ", " << object->getY() << " on '" << object->getName() << "'" << std::endl;
+void UIManager::handleClick(int x, int y) {
+    auto *drawingManager = &DrawingManager::getSingleton();
+    int _x = drawingManager->getViewportTileX(x);
+    int _y = drawingManager->getViewportTileY(y);
+    Object *object = ObjectManager::getSingleton().getObjectAt(_x, _y);
+    if (object != nullptr) {
+        std::cout << "Received a click at (" << object->getX() << ", " << object->getY() << " on '" << object->getName()
+                  << "'" << std::endl;
+    }
 }
 

@@ -12,7 +12,7 @@ class UIManager {
 
 public:
     static UIManager& getSingleton();
-    void handleClick(Object *object);
+    void handleClick(int x, int y);
 };
 
 
