@@ -13,7 +13,7 @@
 class ObjectManager {
     ObjectManager();
     ObjectManager(const ObjectManager&);
-    std::vector<Object*> *objects = ObjectLoader::loadObjects("objects1.txt");
+    std::vector<Object*> *objects;
 
 public:
     static ObjectManager& getSingleton();
