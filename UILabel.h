@@ -8,18 +8,24 @@
 
 #include "UIElement.h"
 #include <string>
+#include <SFML/Graphics/RectangleShape.hpp>
 
 class UILabel : public UIElement {
     std::string value;
-    sf::Font *font;
-    sf::Color color;
+    sf::Text *text;
+    int margin;
+    sf::RectangleShape *frame;
 
 public:
-    UILabel(int _x, int _y, int _width, int _height);
+    UILabel(int _x, int _y);
     std::string getValue();
     void setValue(std::string value);
     void setFont(sf::Font *font);
     void setColor(sf::Color color);
+    void setMargin(int margin);
+    void setFrameColor(sf::Color color);
+    int getHeight();
+    int getWidth();
 
     void draw(sf::RenderWindow *window);
 };
