@@ -175,8 +175,4 @@ int DrawingManager::getViewportTileY(int mouseY) {
     return (mouseY / tileHeight) - vy;
 }
 
-void DrawingManager::showHeightLevels() {
-
-}
-
 
