@@ -10,13 +10,19 @@ GameManager &GameManager::getSingleton() {
 }
 
 GameManager::GameManager() {
-
+    isGameRunning = true;
+    gameState = GAME;
 }
 
 GameManager::~GameManager() {
-
 }
 
 void GameManager::mainLoop() {
+    while(isGameRunning){
 
+        switch(gameState){
+            case GAME:
+            case MENU:
+        }
+    }
 }
