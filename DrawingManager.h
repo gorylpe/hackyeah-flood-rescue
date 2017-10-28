@@ -62,7 +62,7 @@ public:
     int getViewportTileX(int mouseX);
     int getViewportTileY(int mouseY);
 
-    void switchDebug(){debugMode = !debugMode};
+    void switchDebug(){debugMode = !debugMode;};
 
     void setShowHeightLevels(bool _set){showHeightLevels = _set;};
 };
