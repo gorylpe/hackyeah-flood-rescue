@@ -45,6 +45,8 @@ void DrawingManager::draw(Map *map, std::vector<Object *> *objectsArray) {
             window->draw(sprite);
         }
     }
+
+    window->display();
 }
 
 void DrawingManager::moveViewport(Map* map, DrawingManager::MOVEDIR dir) {
