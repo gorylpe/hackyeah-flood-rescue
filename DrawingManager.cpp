@@ -70,3 +70,11 @@ void DrawingManager::moveViewport(Map* map, DrawingManager::MOVEDIR dir) {
             break;
     }
 }
+
+int DrawingManager::getViewportTileX(int mouseX) {
+    return (mouseX / tileWidth) - vw;
+}
+
+int DrawingManager::getViewportTileY(int mouseY) {
+    return (mouseY / tileHeight) - vh;
+}
