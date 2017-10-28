@@ -3,6 +3,7 @@
 //
 
 #include "GameManager.h"
+#include "ObjectManager.h"
 
 GameManager &GameManager::getSingleton() {
     static GameManager singleton;
@@ -12,6 +13,7 @@ GameManager &GameManager::getSingleton() {
 GameManager::GameManager() {
     isGameRunning = true;
     gameState = GAME;
+    map = new Map(50, 50);
 }
 
 GameManager::~GameManager() {
@@ -38,5 +40,21 @@ void GameManager::setFrameTime(int time) {
 }
 
 void GameManager::gameLoop() {
-
+    sf::Event e;
+    DrawingManager *drawingManager = &DrawingManager::getSingleton();
+    sf::Window *window = drawingManager->getWindow();
+    while (window->pollEvent(e)) {
+        switch (e.type) {
+            case sf::Event::Closed:
+                window->close();
+                isGameRunning = false;
+                break;
+            case sf::Event::KeyPressed:
+                switch (e.key.code) {
+                    case sf::Keyboard::Space:
+                       map->update();
+                }
+        }
+    }
+    drawingManager->draw(map, ObjectManager::getSingleton().getObjects());
 }
