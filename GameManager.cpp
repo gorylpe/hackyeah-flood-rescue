@@ -4,6 +4,7 @@
 
 #include "GameManager.h"
 #include "ObjectManager.h"
+#include "MapLoader.h"
 
 GameManager &GameManager::getSingleton() {
     static GameManager singleton;
@@ -13,7 +14,7 @@ GameManager &GameManager::getSingleton() {
 GameManager::GameManager() {
     isGameRunning = true;
     gameState = GAME;
-    map = new Map(50, 50);
+    map = MapLoader::loadMap("map1.txt");
 }
 
 GameManager::~GameManager() {
