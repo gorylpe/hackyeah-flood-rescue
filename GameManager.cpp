@@ -72,18 +72,25 @@ void GameManager::handleEvents() {
                     case sf::Keyboard::Down:
                         drawingManager->moveViewport(map, DrawingManager::DOWN);
                         break;
+                    default:
+                        break;
                 }
+                break;
             case sf::Event::MouseButtonPressed:
                 switch (e.mouseButton.button) {
-                    case sf::Mouse::Left:
+                    case sf::Mouse::Left: {
                         int x = drawingManager->getViewportTileX(e.mouseButton.x);
                         int y = drawingManager->getViewportTileY(e.mouseButton.y);
                         Object *object = ObjectManager::getSingleton().getObjectAt(x, y);
                         if (object != nullptr) {
                             UIManager::getSingleton().handleClick(object);
                         }
+                    }
+                    break;
+                    default:
                         break;
                 }
+                break;
         }
     }
 
