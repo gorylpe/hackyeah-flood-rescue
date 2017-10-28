@@ -3,14 +3,17 @@
 //
 
 #include <vector>
+#include <SFML/Graphics/RenderWindow.hpp>
+
 #ifndef GRA_UIELEMENT_H
 #define GRA_UIELEMENT_H
 
 
 class UIElement {
-
+protected:
     int x, y, width, height;
 
+public:
     UIElement(int _x, int _y, int _width, int _height)
             :x(_x),
              y(_y),
@@ -21,6 +24,8 @@ public:
     int getY(){return y;}
     int getWidth(){return width;}
     int getHeight(){return height;}
+
+    virtual void draw(sf::RenderWindow *window) = 0;
 };
 
 
