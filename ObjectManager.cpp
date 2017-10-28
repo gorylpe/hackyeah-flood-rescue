@@ -27,7 +27,7 @@ Object *ObjectManager::getObjectAt(int x, int y) {
     return nullptr;
 }
 
-long ObjectManager::resetObjects() {
+void ObjectManager::resetObjects() {
     for (int i = 0; i < objects->size(); i++) {
          delete objects[i];
     }

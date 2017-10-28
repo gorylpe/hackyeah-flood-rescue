@@ -15,12 +15,12 @@ class ObjectManager {
     ObjectManager(const ObjectManager&);
     std::vector<Object*> *objects;
 
-    resetObjects();
-
 public:
     static ObjectManager& getSingleton();
     std::vector<Object*> *getObjects();
     Object *getObjectAt(int x, int y);
+
+    void resetObjects();
 };
 
 
