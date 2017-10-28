@@ -5,7 +5,7 @@
 #include "ObjectFirestation.h"
 
 ObjectFirestation::ObjectFirestation(int _x, int _y)
-:Object(OBJECTTYPE::FIRESTATION, _x, _y){
+:Object(OBJECTTYPE::FIRESTATION, DrawableObject::TEXTURE::FIRESTATION, _x, _y){
 
 }
 

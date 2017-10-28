@@ -9,6 +9,7 @@
 #include "UIElement.h"
 #include <string>
 #include <SFML/Graphics/RectangleShape.hpp>
+#include <SFML/Graphics.hpp>
 
 class UILabel : public UIElement {
     std::string value;

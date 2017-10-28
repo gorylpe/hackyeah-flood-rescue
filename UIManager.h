@@ -6,9 +6,11 @@
 #define GRA_UIMANAGER_H
 #include "Object.h"
 #include "UIElement.h"
+#include "UILabel.h"
 
 class UIManager {
     std::vector<UIElement*> *elements;
+    UILabel *tooltip;
     UIManager();
     UIManager(const UIManager&);
 
