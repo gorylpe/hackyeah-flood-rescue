@@ -24,7 +24,7 @@ void UILabel::draw(sf::RenderWindow *window) {
     if (visible) {
         auto bounds = text->getLocalBounds();
         frame->setPosition(x, y);
-        frame->setSize(sf::Vector2f(bounds.width + margin, bounds.height + margin));
+        frame->setSize(sf::Vector2f(bounds.width + margin + bounds.left, bounds.height + margin + bounds.top));
         window->draw(*frame);
         text->setPosition(x + margin, y + margin);
         window->draw(*text);
