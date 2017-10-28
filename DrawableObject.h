@@ -16,7 +16,8 @@ public:
         ROAD = 4,
         SANDBAGS = 5,
         FIRESTATION = 6,
-        FIRETRUCK = 7
+        FIRETRUCK = 7,
+        HELI = 8
     };
 protected:
     TEXTURE texture;
