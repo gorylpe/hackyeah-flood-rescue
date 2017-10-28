@@ -10,7 +10,7 @@ UIManager::UIManager() {
     elements = new std::vector<UIElement*>();
     tooltip = new UILabel(0, 0);
     tooltip->setColor(sf::Color::Black);
-    sf::Font *font = new sf::Font();
+    font = new sf::Font();
     font->loadFromFile("Roboto-Regular.ttf");
     tooltip->setFont(font);
     tooltip->setMargin(0);
