@@ -6,13 +6,13 @@
 Map::Map(int _width, int _height):
         width(_width),
         height(_height) {
-
+    tiles = new Tile**[width];
+    for (int i = 0; i < height; i++) {
+      tiles[i] = new Tile*[height];
+    }
 }
 
-unsigned int Map::getWaterLevel(int x, int y) {
-    return waterLevels[x][y];
+Tile *Map::getTile(int x, int y) {
+    return tiles[x][y];
 }
 
-void Map::setWaterLevel(int x, int y, int level) {
-   waterLevels[x][y] = level;
-}
