@@ -20,7 +20,17 @@ void UILabel::setValue(std::string value) {
 
 void UILabel::draw(sf::RenderWindow *window) {
     sf::Text text;
+    text.setFont(*font);
+    text.setFillColor(color);
     text.setString(value);
     text.setPosition(x, y);
     window->draw(text);
+}
+
+void UILabel::setFont(sf::Font *font) {
+    this->font = font;
+}
+
+void UILabel::setColor(sf::Color color) {
+    this->color = color;
 }

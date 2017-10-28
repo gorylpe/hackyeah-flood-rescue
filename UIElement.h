@@ -25,7 +25,7 @@ public:
     int getWidth(){return width;}
     int getHeight(){return height;}
 
-    virtual void draw(sf::RenderWindow *window);
+    virtual void draw(sf::RenderWindow *window) = 0;
 };
 
 

@@ -11,11 +11,15 @@
 
 class UILabel : public UIElement {
     std::string value;
+    sf::Font *font;
+    sf::Color color;
 
 public:
     UILabel(int _x, int _y, int _width, int _height);
     std::string getValue();
     void setValue(std::string value);
+    void setFont(sf::Font *font);
+    void setColor(sf::Color color);
 
     void draw(sf::RenderWindow *window);
 };
