@@ -12,6 +12,7 @@ public:
     Tile *getTile(int x, int y);
     int getWidth();
     int getHeight();
+    void update();
 private:
     int width, height;
     Tile ***tiles;

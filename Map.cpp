@@ -24,3 +24,7 @@ int Map::getHeight() {
     return height;
 }
 
+void Map::update() {
+
+}
+
