@@ -53,11 +53,12 @@ void Map::update() {
      }
  }
 
-void Map::changingToWater(Tile* _water, Tile* _notWater) {
-    if (_notWater->getTexture() != DrawableObject::TEXTURE::WATER) {
-        if (_notWater->getHeight() < _water->getHeight()) {
-            _notWater->setTexture(DrawableObject::TEXTURE::WATER);
+void Map::changingToWater(Tile* water, Tile* notWater) {
+    if (notWater->getTexture() != DrawableObject::TEXTURE::WATER) {
+        if (notWater->getHeight() < water->getHeight()) {
+            notWater->setTexture(DrawableObject::TEXTURE::WATER);
         }
     }
+    notWater->setHeight(water->getHeight());
 }
 

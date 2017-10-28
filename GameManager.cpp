@@ -6,6 +6,7 @@
 #include "GameManager.h"
 #include "ObjectManager.h"
 #include "MapLoader.h"
+#include "UIManager.h"
 
 GameManager &GameManager::getSingleton() {
     static GameManager singleton;
@@ -78,7 +79,9 @@ void GameManager::handleEvents() {
                         int x = drawingManager->getViewportTileX(e.mouseButton.x);
                         int y = drawingManager->getViewportTileY(e.mouseButton.y);
                         Object *object = ObjectManager::getSingleton().getObjectAt(x, y);
-                        // TODO: direct click to UI
+                        if (object != nullptr) {
+                            UIManager::getSingleton().handleClick(object);
+                        }
                         break;
                 }
         }
