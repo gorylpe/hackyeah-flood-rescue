@@ -10,7 +10,8 @@ class Tile {
         WATER,
         BUILDING,
         GRASS,
-        FOREST
+        FOREST,
+        ROAD
     };
 
     TILETYPE tileType;
