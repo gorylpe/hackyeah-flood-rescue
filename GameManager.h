@@ -26,6 +26,7 @@ class GameManager {
     ~GameManager();
 
     void gameLoop();
+    void handleEvents();
 public:
     static GameManager & getSingleton();
     void mainLoop();

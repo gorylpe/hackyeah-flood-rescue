@@ -41,9 +41,14 @@ void GameManager::setFrameTime(int time) {
 }
 
 void GameManager::gameLoop() {
-    sf::Event e;
+    handleEvents();
+    DrawingManager::getSingleton().draw(map, ObjectManager::getSingleton().getObjects());
+}
+
+void GameManager::handleEvents() {
     DrawingManager *drawingManager = &DrawingManager::getSingleton();
     sf::Window *window = drawingManager->getWindow();
+    sf::Event e;
     while (window->pollEvent(e)) {
         switch (e.type) {
             case sf::Event::Closed:
@@ -53,9 +58,22 @@ void GameManager::gameLoop() {
             case sf::Event::KeyPressed:
                 switch (e.key.code) {
                     case sf::Keyboard::Space:
-                       map->update();
+                        map->update();
+                        break;
+                    case sf::Keyboard::Left:
+                        drawingManager->moveViewport(map, DrawingManager::LEFT);
+                        break;
+                    case sf::Keyboard::Right:
+                        drawingManager->moveViewport(map, DrawingManager::RIGHT);
+                        break;
+                    case sf::Keyboard::Up:
+                        drawingManager->moveViewport(map, DrawingManager::UP);
+                        break;
+                    case sf::Keyboard::Down:
+                        drawingManager->moveViewport(map, DrawingManager::DOWN);
+                        break;
                 }
         }
     }
-    drawingManager->draw(map, ObjectManager::getSingleton().getObjects());
+
 }
