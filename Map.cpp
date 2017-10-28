@@ -16,6 +16,14 @@ Tile *Map::getTile(int x, int y) {
     return tiles[x][y];
 }
 
+int Map::getWidth() {
+    return width;
+}
+
+int Map::getHeight() {
+    return height;
+}
+
 void Map::update() {
 
 }
