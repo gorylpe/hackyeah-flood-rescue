@@ -16,3 +16,7 @@ Tile *Map::getTile(int x, int y) {
     return tiles[x][y];
 }
 
+void Map::update() {
+
+}
+

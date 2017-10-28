@@ -10,6 +10,7 @@ class Map {
 public:
     Map(int _width, int _height);
     Tile *getTile(int x, int y);
+    void update();
 private:
     int width, height;
     Tile ***tiles;
