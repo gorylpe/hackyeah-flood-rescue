@@ -43,6 +43,7 @@ void GameManager::setFrameTime(int time) {
 void GameManager::gameLoop() {
     handleEvents();
     DrawingManager::getSingleton().draw(map, ObjectManager::getSingleton().getObjects());
+    std::cout <<
 }
 
 void GameManager::handleEvents() {

@@ -3,9 +3,10 @@
 //
 
 #include "ObjectManager.h"
+#include "ObjectLoader.h"
 
 ObjectManager::ObjectManager() {
-    objects = new std::vector<Object*>;
+    objects = ObjectLoader::loadObjects("objects1.txt");
 }
 
 std::vector<Object *> *ObjectManager::getObjects() {

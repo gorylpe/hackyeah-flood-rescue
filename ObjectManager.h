@@ -7,12 +7,14 @@
 #include <vector>
 #include "Object.h"
 #include "DrawingManager.h"
+#include "ObjectLoader.h"
 
 
 class ObjectManager {
     ObjectManager();
     ObjectManager(const ObjectManager&);
     std::vector<Object*> *objects;
+
 public:
     static ObjectManager& getSingleton();
     std::vector<Object*> *getObjects();
