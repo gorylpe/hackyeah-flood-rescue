@@ -12,11 +12,18 @@
 class Object {
     std::string name;
     int x, y;
+    OBJECTTYPE objectType;
 public:
     Object(std::string _name, int _x, int _y)
     :name(_name)
     ,x(_x)
     ,y(_y){}
+
+    enum OBJECTTYPE{
+        FIRESTATION = 0,
+        FIRETRUCK = 1,
+        HELICOPTER = 2
+    };
 
     std::string getName(){return name;}
     virtual void update(Map* map);
@@ -24,6 +31,8 @@ public:
     void setX(int x) { this->x = x; }
     int getY() { return y; }
     void setY(int y) { this->y = y; }
+    void setObjectType(OBJECTTYPE _objectType){objectType = _objectType;}
+    OBJECTTYPE getObjectType(){return objectType;}
 
 };
 

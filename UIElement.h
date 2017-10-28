@@ -17,10 +17,10 @@ class UIElement {
              width(_width),
              height(_height){}
 public:
-    int getX();
-    int getY();
-    int getWidth();
-    int getHeight();
+    int getX(){return x;}
+    int getY(){return y;}
+    int getWidth(){return width;}
+    int getHeight(){return height;}
 };
 
 
