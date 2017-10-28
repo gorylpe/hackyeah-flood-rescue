@@ -8,7 +8,8 @@
 
 
 class GameManager {
-    const double frameTime = 0;
+    // milliseconds
+    sf::Time frameTime;
     enum GAMESTATE{
             GAME,
             MENU
@@ -19,9 +20,12 @@ class GameManager {
     GameManager();
     GameManager(const GameManager &);
     ~GameManager();
+
+    void gameLoop();
 public:
     static GameManager & getSingleton();
     void mainLoop();
+    void setFrameTime(int time);
 };
 
 
