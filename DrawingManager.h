@@ -15,12 +15,27 @@
 #include "Tile.h"
 
 class DrawingManager {
+public:
+    enum MOVEDIR{
+        LEFT,
+        RIGHT,
+        TOP,
+        BOTTOM
+    };
+private:
     DrawingManager();
     DrawingManager(const DrawingManager&){};
 
     const int windowWidth = 800;
     const int windowHeight = 600;
     sf::RenderWindow* window;
+
+    const int tileWidth = 40;
+    const int tileHeight = 40;
+    int vx = 0;
+    int vy = 0;
+    int vw = windowWidth / tileWidth;
+    int vh = windowHeight / tileHeight;
 
     void loadSprites();
 
@@ -32,6 +47,8 @@ public:
     }
 
     void draw(Map* map, std::vector<Object*>* objectsArray);
+
+    void moveViewport(MOVEDIR dir);
 };
 
 

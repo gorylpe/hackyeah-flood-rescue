@@ -36,4 +36,17 @@ void DrawingManager::loadSprites(){
 void DrawingManager::draw(Map *map, std::vector<Object *> *objectsArray) {
     window->clear();
 
+
+}
+
+void DrawingManager::moveViewport(DrawingManager::MOVEDIR dir) {
+    switch(dir){
+        case LEFT:
+            vx -= 1;
+            if(vx < 0) vx = 0;
+            break;
+        case RIGHT:
+            vx += 1;
+            if(vx )
+    }
 }
