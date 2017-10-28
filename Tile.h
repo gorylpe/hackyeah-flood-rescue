@@ -6,6 +6,7 @@
 #define GRA_TILE_H
 
 class Tile {
+public:
     enum TILETYPE {
         WATER,
         BUILDING,
@@ -13,7 +14,7 @@ class Tile {
         FOREST,
         ROAD
     };
-
+private:
     TILETYPE tileType;
     int height;
 

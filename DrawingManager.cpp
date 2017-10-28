@@ -3,3 +3,11 @@
 //
 
 #include "DrawingManager.h"
+
+void DrawingManager::draw(Map *map, std::vector<Object *> *objectsArray) {
+
+}
+
+DrawingManager::DrawingManager() {
+    textureMap = new std::map<Tile::TILETYPE, sf::Texture>();
+}

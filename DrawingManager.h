@@ -6,8 +6,25 @@
 #define GRA_DRAWINGMANAGER_H
 
 
-class DrawingManager {
+#include <vector>
+#include <SFML/Graphics/Texture.hpp>
+#include <map>
+#include "Map.h"
+#include "Object.h"
+#include "Tile.h"
 
+class DrawingManager {
+    DrawingManager();
+    DrawingManager(const DrawingManager&){};
+
+    std::map<Tile::TILETYPE, sf::Texture>* textureMap;
+public:
+    static DrawingManager& getSingleton(){
+        static DrawingManager singleton;
+        return singleton;
+    }
+
+    void draw(Map* map, std::vector<Object*>* objectsArray);
 };
 
 
