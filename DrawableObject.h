@@ -14,7 +14,9 @@ public:
         GRASS = 2,
         FOREST = 3,
         ROAD = 4,
-        SANDBAGS = 5
+        SANDBAGS = 5,
+        FIRESTATION = 6,
+        FIRETRUCK = 7
     };
 private:
     TEXTURE texture;
