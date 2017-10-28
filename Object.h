@@ -14,8 +14,8 @@ class Object {
     int x, y;
     OBJECTTYPE objectType;
 public:
-    Object(std::string _name, int _x, int _y)
-    :name(_name)
+    Object(OBJECTTYPE _objectType, int _x, int _y)
+    :objectType(_objectType)
     ,x(_x)
     ,y(_y){}
 
