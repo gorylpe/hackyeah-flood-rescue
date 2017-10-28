@@ -75,10 +75,24 @@ void GameManager::handleEvents() {
                     case sf::Keyboard::R:
                         resetMap();
                         break;
+                    case sf::Keyboard::D:
+                        drawingManager->switchDebug();
+                        break;
+                    case sf::Keyboard::LAlt:
+                        drawingManager->setShowHeightLevels(true);
+                        break;
                     default:
                         break;
                 }
                 break;
+            case sf::Event::KeyReleased:
+                switch (e.key.code) {
+                    case sf::Keyboard::LAlt:
+                        drawingManager->setShowHeightLevels(false);
+                        break;
+                    default:
+                        break;
+                }
             case sf::Event::MouseButtonPressed:
                 switch (e.mouseButton.button) {
                     case sf::Mouse::Left:
