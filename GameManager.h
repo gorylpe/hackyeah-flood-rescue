@@ -31,6 +31,8 @@ public:
     static GameManager & getSingleton();
     void mainLoop();
     void setFrameTime(int time);
+
+    void doObjectsIteration();
 };
 
 

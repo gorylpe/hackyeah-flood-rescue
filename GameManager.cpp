@@ -58,7 +58,7 @@ void GameManager::handleEvents() {
             case sf::Event::KeyPressed:
                 switch (e.key.code) {
                     case sf::Keyboard::Space:
-                        map->update();
+                        doObjectsIteration();
                         break;
                     case sf::Keyboard::Left:
                         drawingManager->moveViewport(map, DrawingManager::LEFT);
@@ -93,5 +93,8 @@ void GameManager::handleEvents() {
                 break;
         }
     }
+}
 
+void GameManager::doObjectsIteration(){
+    map->update();
 }
