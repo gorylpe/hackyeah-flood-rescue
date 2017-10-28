@@ -16,6 +16,7 @@ public:
 private:
     int width, height;
     Tile ***tiles;
+    void changingToWater(Tile*, Tile*);
 };
 
 
