@@ -1,0 +1,3 @@
+C:/Users/Piotr/Documents/CLionProjects/Gra/cmake-build-debug/CMakeFiles/Gra.dir
+C:/Users/Piotr/Documents/CLionProjects/Gra/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Piotr/Documents/CLionProjects/Gra/cmake-build-debug/CMakeFiles/rebuild_cache.dir
