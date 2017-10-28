@@ -44,19 +44,27 @@ void Map::update() {
             if(water->getTexture() == DrawableObject::TEXTURE::WATER){
                 if(i > 0){
                     Tile* notWater = getTile(i-1, j);
-                    changingToWater(water, notWater);
+                    if(notWater->getSandbagsRight() == false) {
+                        changingToWater(water, notWater);
+                    }
                 }
                 if(j > 0){
                     Tile* notWater = getTile(i, j-1);
-                    changingToWater(water, notWater);
+                    if(notWater->getSandbagsDown() == false) {
+                        changingToWater(water, notWater);
+                    }
                 }
                 if(i < width-1){
                     Tile* notWater = getTile(i+1, j);
-                    changingToWater(water, notWater);
+                    if(notWater->getSandbagsLeft() == false) {
+                        changingToWater(water, notWater);
+                    }
                 }
                 if(j < height-1){
                     Tile* notWater = getTile(i, j+1);
-                    changingToWater(water, notWater);
+                    if(notWater->getSandbagsUp() == false) {
+                        changingToWater(water, notWater);
+                    }
                 }
             }
         }
