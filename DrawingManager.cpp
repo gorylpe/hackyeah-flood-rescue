@@ -42,7 +42,7 @@ void DrawingManager::draw(Map *map, std::vector<Object *> *objectsArray) {
         for(int j = vy; j <= vy + vh; ++j){
             sf::Sprite sprite;
             sprite.setTexture(*textureMap->at(map->getTile(i, j)->getTileType()));
-            sprite.setPosition(i * tileWidth, j * tileHeight);
+            sprite.setPosition((i - vx) * tileWidth, (j - vy) * tileHeight);
             window->draw(sprite);
         }
     }
