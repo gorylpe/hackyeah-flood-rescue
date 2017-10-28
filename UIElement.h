@@ -19,11 +19,12 @@ public:
              y(_y),
              width(_width),
              height(_height){}
+public:
+    int getX(){return x;}
+    int getY(){return y;}
+    int getWidth(){return width;}
+    int getHeight(){return height;}
 
-    int getX();
-    int getY();
-    int getWidth();
-    int getHeight();
     virtual void draw(sf::RenderWindow *window);
 };
 

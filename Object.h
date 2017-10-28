@@ -9,21 +9,31 @@
 #include "Map.h"
 
 
-class Object {
+class Object{
+public:
+    enum OBJECTTYPE{
+        FIRESTATION = 0,
+        FIRETRUCK = 1,
+        HELICOPTER = 2
+    };
+private:
     std::string name;
     int x, y;
+    OBJECTTYPE objectType;
 public:
-    Object(std::string _name, int _x, int _y)
-    :name(_name)
+    Object(OBJECTTYPE _objectType, int _x, int _y)
+    :objectType(_objectType)
     ,x(_x)
     ,y(_y){}
 
     std::string getName(){return name;}
-    virtual void update(Map* map);
+    virtual void update(Map* map) = 0;
     int getX() { return x; }
     void setX(int x) { this->x = x; }
     int getY() { return y; }
     void setY(int y) { this->y = y; }
+    void setObjectType(OBJECTTYPE _objectType){objectType = _objectType;}
+    OBJECTTYPE getObjectType(){return objectType;}
 
 };
 
