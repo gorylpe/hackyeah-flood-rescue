@@ -13,13 +13,12 @@ Map* MapLoader::loadMap(std::string filename) {
     file >> mapWidth >> mapHeight;
     auto* map = new Map(mapWidth, mapHeight);
 
-    int type;
-
-    for(int i = 0; i < mapWidth; ++i){
-        for(int j = 0; j < mapHeight; ++j){
-            file >> type >> mapHeight;
-            Tile* tile = map->getTile(j, i);
-            tile->setHeight(mapHeight);
+    int type, height;
+    for(int j = 0; j < mapHeight; ++j){
+        for(int i = 0; i < mapWidth; ++i){
+            file >> type >> height;
+            Tile* tile = map->getTile(i, j);
+            tile->setHeight(height);
             tile->setTileType(static_cast<Tile::TILETYPE>(type));
         }
     }

@@ -16,7 +16,6 @@ GameManager::GameManager() {
     isGameRunning = true;
     gameState = GAME;
     map = MapLoader::loadMap("map1.txt");
-    std::cout << map->getTile(0, 0)->getTileType() << std::endl;
 }
 
 GameManager::~GameManager() {

@@ -42,7 +42,7 @@ void DrawingManager::draw(Map *map, std::vector<Object *> *objectsArray) {
         for(int j = vy; j <= vy + vh; ++j){
             sf::Sprite sprite;
             sprite.setTexture(*textureMap->at(map->getTile(i, j)->getTileType()));
-            sprite.setPosition(i * tileWidth, j * tileHeight);
+            sprite.setPosition((i - vx) * tileWidth, (j - vy) * tileHeight);
             window->draw(sprite);
         }
     }
@@ -69,4 +69,12 @@ void DrawingManager::moveViewport(Map* map, DrawingManager::MOVEDIR dir) {
             if(vy + vh >= map->getHeight()) vy = map->getHeight() - vh - 1;
             break;
     }
+}
+
+int DrawingManager::getViewportTileX(int mouseX) {
+    return (mouseX / tileWidth) - vw;
+}
+
+int DrawingManager::getViewportTileY(int mouseY) {
+    return (mouseY / tileHeight) - vh;
 }
