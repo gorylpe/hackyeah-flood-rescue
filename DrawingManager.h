@@ -52,7 +52,12 @@ public:
     void draw(Map* map, std::vector<Object*>* objectsArray);
 
     void moveViewport(Map* map, MOVEDIR dir);
+
+    int getViewportTileX(int mouseX);
+    int getViewportTileY(int mouseY);
 };
+
+
 
 
 #endif //GRA_DRAWINGMANAGER_H
