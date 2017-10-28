@@ -107,8 +107,26 @@ void DrawingManager::draw(Map *map, std::vector<Object *>* objectsArray) {
                 sprite.setPosition(x * tileWidth, y * tileHeight);
                 window->draw(sprite);
             }
+        }
+    }
 
-            if(debugMode) {
+    sf::Sprite sprite;
+    for(int k = 0; k < objectsArray->size(); ++k){
+        Object* object = objectsArray->at(k);
+        int x = object->getX() - vx;
+        int y = object->getY() - vy;
+        sprite.setTexture(*textureMap->at(object->getTexture()));
+        sprite.setScale(1.0 * tileWidth / sprite.getLocalBounds().width, 1.0 * tileHeight / sprite.getLocalBounds().height);
+        sprite.setPosition(x * tileWidth, y * tileHeight);
+        window->draw(sprite);
+    }
+
+    for(int i = vx; i <= vx + vw; ++i) {
+        for (int j = vy; j <= vy + vh; ++j) {
+            Tile* tile = map->getTile(i, j);
+            int x = i - vx;
+            int y = j - vy;
+            if (debugMode) {
                 sf::Text coords;
                 coords.setFont(*font);
                 coords.setCharacterSize(10);
@@ -118,25 +136,16 @@ void DrawingManager::draw(Map *map, std::vector<Object *>* objectsArray) {
                 window->draw(coords);
             }
 
-            if(showHeightLevels) {
+            if (showHeightLevels) {
                 sf::Text height;
                 height.setFont(*font);
-                height.setCharacterSize(12);
+                height.setCharacterSize(24);
                 height.setFillColor(sf::Color::Black);
                 height.setOutlineColor(sf::Color::White);
                 height.setOutlineThickness(2.0);
                 height.setString(std::to_string(tile->getHeight()));
-                height.setPosition((x + 0.5) * tileWidth, (y + 0.5) * tileWidth);
+                height.setPosition((x + 0.25) * tileWidth, (y + 0.25) * tileWidth);
                 window->draw(height);
-            }
-
-            for(int k = 0; k < objectsArray->size(); ++k){
-                Object* object = objectsArray->at(k);
-                x = object->getX() - vx;
-                y = object->getY() - vy;
-                sprite.setTexture(*textureMap->at(object->getTexture()));
-                sprite.setPosition(x * tileWidth, y * tileHeight);
-                window->draw(sprite);
             }
         }
     }
