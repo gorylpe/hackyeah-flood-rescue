@@ -44,6 +44,11 @@ void DrawingManager::loadSprites(){
     texture->loadFromFile("sprites/sandbags.png");
     texture->setSmooth(true);
     textureMap->push_back(texture);
+
+    texture = new sf::Texture();
+    texture->loadFromFile("sprites/firetruck.png");
+    texture->setSmooth(true);
+    textureMap->push_back(texture);
 }
 
 void DrawingManager::draw(Map *map, std::vector<Object *>* objectsArray) {
@@ -62,6 +67,39 @@ void DrawingManager::draw(Map *map, std::vector<Object *>* objectsArray) {
 
             if(tile->getSandbagsUp()){
                 sprite.setTexture(*textureMap->at(DrawableObject::TEXTURE::SANDBAGS));
+                sprite.setOrigin(sprite.getLocalBounds().width / 2, sprite.getLocalBounds().height / 2);
+                sprite.setScale(1.0 * tileWidth / sprite.getLocalBounds().width, 1.0 * tileHeight / sprite.getLocalBounds().height);
+                window->draw(sprite);
+            }
+            if(tile->getSandbagsDown()){
+                sprite.setTexture(*textureMap->at(DrawableObject::TEXTURE::SANDBAGS));
+                sprite.setOrigin(sprite.getLocalBounds().width / 2, sprite.getLocalBounds().height / 2);
+                sprite.setScale(1.0 * tileWidth / sprite.getLocalBounds().width, 1.0 * tileHeight / sprite.getLocalBounds().height);
+                sprite.setRotation(180);
+                window->draw(sprite);
+            }
+            if(tile->getSandbagsLeft()){
+                sprite.setTexture(*textureMap->at(DrawableObject::TEXTURE::SANDBAGS));
+                sprite.setOrigin(sprite.getLocalBounds().width / 2, sprite.getLocalBounds().height / 2);
+                sprite.setScale(1.0 * tileWidth / sprite.getLocalBounds().width, 1.0 * tileHeight / sprite.getLocalBounds().height);
+                sprite.setRotation(90);
+                window->draw(sprite);
+            }
+            if(tile->getSandbagsUp()){
+                sprite.setTexture(*textureMap->at(DrawableObject::TEXTURE::SANDBAGS));
+                sprite.setOrigin(sprite.getLocalBounds().width / 2, sprite.getLocalBounds().height / 2);
+                sprite.setScale(1.0 * tileWidth / sprite.getLocalBounds().width, 1.0 * tileHeight / sprite.getLocalBounds().height);
+                sprite.setRotation(270);
+                window->draw(sprite);
+            }
+
+            for(int k = 0; k < objectsArray->size(); ++k){
+                Object* object = objectsArray->at(k);
+                x = object->getX() - vx;
+                y = object->getY() - vy;
+                sprite.setTexture(*textureMap->at(object->getTexture()));
+                sprite.setPosition(x * tileWidth, y * tileHeight);
+                window->draw(sprite);
             }
         }
     }

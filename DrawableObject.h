@@ -18,7 +18,7 @@ public:
         FIRESTATION = 6,
         FIRETRUCK = 7
     };
-private:
+protected:
     TEXTURE texture;
 
 public:
