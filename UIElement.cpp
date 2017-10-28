@@ -3,3 +3,19 @@
 //
 
 #include "UIElement.h"
+
+int UIElement::getX() {
+    return x;
+}
+
+int UIElement::getY() {
+    return y;
+}
+
+int UIElement::getWidth() {
+    return width;
+}
+
+int UIElement::getHeight() {
+    return height;
+}
