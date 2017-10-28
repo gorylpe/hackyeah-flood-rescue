@@ -28,5 +28,9 @@ Map* MapLoader::loadMap(std::string filename) {
     map->getTile(3,6)->setSandbagsLeft(true);
     map->getTile(2,2)->setSandbagsRight(true);
 
+    map->getTile(6, 5)->setSandbagsUp(true);
+    map->getTile(6, 5)->setSandbagsDown(true);
+    map->getTile(6, 5)->setSandbagsLeft(true);
+
     return map;
 }
