@@ -12,7 +12,8 @@ public:
         BUILDING = 1,
         GRASS = 2,
         FOREST = 3,
-        ROAD = 4
+        ROAD = 4,
+        SANDBAGS = 5
     };
 private:
     TILETYPE tileType;
