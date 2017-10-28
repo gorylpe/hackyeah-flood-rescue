@@ -15,7 +15,6 @@ Map* MapLoader::loadMap(std::string filename) {
 
     int type, height;
     for(int j = 0; j < mapHeight; ++j){
-        std::cout << j << std::endl;
         for(int i = 0; i < mapWidth; ++i){
             file >> type >> height;
             Tile* tile = map->getTile(i, j);
