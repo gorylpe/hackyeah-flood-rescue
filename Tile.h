@@ -5,10 +5,26 @@
 #ifndef GRA_TILE_H
 #define GRA_TILE_H
 
-
 class Tile {
+    enum TILETYPE {
+        WATER,
+        BUILDING,
+        GRASS,
+        FOREST
+    };
+
+    TILETYPE tileType;
+    int height;
+
+public:
+    Tile(TILETYPE _tileType, int _height)
+    :tileType(_tileType)
+    ,height(_height){}
+
+    TILETYPE    getTileType(){return tileType;}
+    int         getHeight(){return height;}
+
+    void        setHeight(int newHeight){ height = newHeight; }
+    void        setTileType(TILETYPE newTileType){ tileType = newTileType; }
 
 };
-
-
-#endif //GRA_TILE_H
