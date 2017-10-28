@@ -9,7 +9,14 @@
 #include "Map.h"
 
 
-class Object {
+class Object{
+public:
+    enum OBJECTTYPE{
+        FIRESTATION = 0,
+        FIRETRUCK = 1,
+        HELICOPTER = 2
+    };
+private:
     std::string name;
     int x, y;
     OBJECTTYPE objectType;
@@ -19,14 +26,8 @@ public:
     ,x(_x)
     ,y(_y){}
 
-    enum OBJECTTYPE{
-        FIRESTATION = 0,
-        FIRETRUCK = 1,
-        HELICOPTER = 2
-    };
-
     std::string getName(){return name;}
-    virtual void update(Map* map);
+    virtual void update(Map* map) = 0;
     int getX() { return x; }
     void setX(int x) { this->x = x; }
     int getY() { return y; }

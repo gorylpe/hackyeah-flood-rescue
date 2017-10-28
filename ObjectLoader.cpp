@@ -4,6 +4,7 @@
 
 #include <fstream>
 #include "ObjectLoader.h"
+#include "ObjectFirestation.h"
 
 std::vector<Object*>* ObjectLoader::loadObjects(std::string filename) {
     std::ifstream file;
@@ -17,7 +18,12 @@ std::vector<Object*>* ObjectLoader::loadObjects(std::string filename) {
     for(int i = 0; i < numberOfObjects; ++i){
         file >> type >> x >> y;
         auto objecttype = static_cast<Object::OBJECTTYPE>(type);
-        Object* object = new Object(objecttype, x, y);
+        Object* object;
+        switch(objecttype){
+            case Object::OBJECTTYPE::FIRESTATION:
+                object = new ObjectFirestation(x, y);
+                break;
+        }
         objects->push_back(object);
     }
 
