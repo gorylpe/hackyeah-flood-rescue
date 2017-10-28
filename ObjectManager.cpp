@@ -27,3 +27,9 @@ Object *ObjectManager::getObjectAt(int x, int y) {
     return nullptr;
 }
 
+void ObjectManager::resetObjects() {
+    objects->erase(objects->begin(), objects->end());
+    delete objects;
+    objects = ObjectLoader::loadObjects("objects1.txt");
+}
+

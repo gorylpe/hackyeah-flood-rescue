@@ -10,6 +10,7 @@
 #include <SFML/Graphics/Texture.hpp>
 #include <map>
 #include <SFML/Graphics/RenderWindow.hpp>
+#include <SFML/Graphics/Font.hpp>
 #include "Map.h"
 #include "Object.h"
 #include "Tile.h"
@@ -26,6 +27,8 @@ private:
     DrawingManager();
     DrawingManager(const DrawingManager&){};
 
+    sf::Font *font;
+
     const int windowWidth = 800;
     const int windowHeight = 600;
     sf::RenderWindow* window;
@@ -41,6 +44,9 @@ private:
     void loadSprites();
 
     std::vector<sf::Texture*>* textureMap;
+
+    bool debugMode = false;
+    bool showHeightLevels = false;
 public:
     static DrawingManager& getSingleton(){
         static DrawingManager singleton;
@@ -55,6 +61,10 @@ public:
 
     int getViewportTileX(int mouseX);
     int getViewportTileY(int mouseY);
+
+    void switchDebug(){debugMode = ~debugMode;};
+
+    void setShowHeightLevels(bool _set){showHeightLevels = _set;};
 };
 
 

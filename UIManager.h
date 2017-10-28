@@ -9,6 +9,7 @@
 #include "UILabel.h"
 
 class UIManager {
+    sf::Font *font;
     std::vector<UIElement*> *elements;
     UILabel *tooltip;
     UIManager();

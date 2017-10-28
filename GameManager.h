@@ -27,6 +27,8 @@ class GameManager {
 
     void gameLoop();
     void handleEvents();
+
+    void resetMap();
 public:
     static GameManager & getSingleton();
     void mainLoop();

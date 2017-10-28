@@ -72,6 +72,9 @@ void GameManager::handleEvents() {
                     case sf::Keyboard::Down:
                         drawingManager->moveViewport(map, DrawingManager::DOWN);
                         break;
+                    case sf::Keyboard::R:
+                        resetMap();
+                        break;
                     default:
                         break;
                 }
@@ -87,6 +90,12 @@ void GameManager::handleEvents() {
                 break;
         }
     }
+}
+
+void GameManager::resetMap(){
+    delete map;
+    map = MapLoader::loadMap("map1.txt");
+    ObjectManager::getSingleton().resetObjects();
 }
 
 void GameManager::doObjectsIteration(){

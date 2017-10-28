@@ -10,6 +10,9 @@
 DrawingManager::DrawingManager() {
     window = new sf::RenderWindow(sf::VideoMode(windowWidth, windowHeight), "Game");
 
+    font = new sf::Font();
+    font->loadFromFile("Roboto-Regular.ttf");
+
     loadSprites();
 }
 
@@ -105,6 +108,28 @@ void DrawingManager::draw(Map *map, std::vector<Object *>* objectsArray) {
                 window->draw(sprite);
             }
 
+            if(debugMode) {
+                sf::Text coords;
+                coords.setFont(*font);
+                coords.setCharacterSize(10);
+                coords.setFillColor(sf::Color::White);
+                coords.setString(std::to_string(i) + "x" + std::to_string(j));
+                coords.setPosition(x * tileWidth, y * tileWidth);
+                window->draw(coords);
+            }
+
+            if(showHeightLevels) {
+                sf::Text height;
+                height.setFont(*font);
+                height.setCharacterSize(12);
+                height.setFillColor(sf::Color::Black);
+                height.setOutlineColor(sf::Color::White);
+                height.setOutlineThickness(2.0);
+                height.setString(std::to_string(tile->getHeight()));
+                height.setPosition((x + 0.5) * tileWidth, (y + 0.5) * tileWidth);
+                window->draw(height);
+            }
+
             for(int k = 0; k < objectsArray->size(); ++k){
                 Object* object = objectsArray->at(k);
                 x = object->getX() - vx;
@@ -143,9 +168,15 @@ void DrawingManager::moveViewport(Map* map, DrawingManager::MOVEDIR dir) {
 }
 
 int DrawingManager::getViewportTileX(int mouseX) {
-    return (mouseX / tileWidth) - vw;
+    return (mouseX / tileWidth) - vx;
 }
 
 int DrawingManager::getViewportTileY(int mouseY) {
-    return (mouseY / tileHeight) - vh;
+    return (mouseY / tileHeight) - vy;
 }
+
+void DrawingManager::showHeightLevels() {
+
+}
+
+
