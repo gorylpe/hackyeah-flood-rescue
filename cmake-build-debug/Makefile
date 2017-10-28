@@ -38,19 +38,19 @@ cmake_force:
 SHELL = cmd.exe
 
 # The CMake executable.
-CMAKE_COMMAND = "C:\Program Files\JetBrains\CLion 2017.2.3\bin\cmake\bin\cmake.exe"
+CMAKE_COMMAND = C:\Users\CLion\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\172.4343.16\bin\cmake\bin\cmake.exe
 
 # The command to remove a file.
-RM = "C:\Program Files\JetBrains\CLion 2017.2.3\bin\cmake\bin\cmake.exe" -E remove -f
+RM = C:\Users\CLion\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\172.4343.16\bin\cmake\bin\cmake.exe -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\Piotr\Documents\CLionProjects\Gra
+CMAKE_SOURCE_DIR = C:\Users\CLion\CLionProjects\gra
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\Piotr\Documents\CLionProjects\Gra\cmake-build-debug
+CMAKE_BINARY_DIR = C:\Users\CLion\CLionProjects\gra\cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -58,7 +58,7 @@ CMAKE_BINARY_DIR = C:\Users\Piotr\Documents\CLionProjects\Gra\cmake-build-debug
 # Special rule for the target package
 package: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool..."
-	"C:\Program Files\JetBrains\CLion 2017.2.3\bin\cmake\bin\cpack.exe" --config ./CPackConfig.cmake
+	C:\Users\CLion\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\172.4343.16\bin\cmake\bin\cpack.exe --config ./CPackConfig.cmake
 .PHONY : package
 
 # Special rule for the target package
@@ -69,19 +69,19 @@ package/fast: package
 # Special rule for the target install/strip
 install/strip: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	"C:\Program Files\JetBrains\CLion 2017.2.3\bin\cmake\bin\cmake.exe" -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+	C:\Users\CLion\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\172.4343.16\bin\cmake\bin\cmake.exe -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip
 
 # Special rule for the target install/strip
 install/strip/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	"C:\Program Files\JetBrains\CLion 2017.2.3\bin\cmake\bin\cmake.exe" -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+	C:\Users\CLion\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\172.4343.16\bin\cmake\bin\cmake.exe -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip/fast
 
 # Special rule for the target package_source
 package_source:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool for source..."
-	"C:\Program Files\JetBrains\CLion 2017.2.3\bin\cmake\bin\cpack.exe" --config ./CPackSourceConfig.cmake C:/Users/Piotr/Documents/CLionProjects/Gra/cmake-build-debug/CPackSourceConfig.cmake
+	C:\Users\CLion\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\172.4343.16\bin\cmake\bin\cpack.exe --config ./CPackSourceConfig.cmake C:/Users/CLion/CLionProjects/gra/cmake-build-debug/CPackSourceConfig.cmake
 .PHONY : package_source
 
 # Special rule for the target package_source
@@ -92,31 +92,31 @@ package_source/fast: package_source
 # Special rule for the target install/local
 install/local: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	"C:\Program Files\JetBrains\CLion 2017.2.3\bin\cmake\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+	C:\Users\CLion\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\172.4343.16\bin\cmake\bin\cmake.exe -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
 .PHONY : install/local
 
 # Special rule for the target install/local
 install/local/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	"C:\Program Files\JetBrains\CLion 2017.2.3\bin\cmake\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+	C:\Users\CLion\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\172.4343.16\bin\cmake\bin\cmake.exe -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
 .PHONY : install/local/fast
 
 # Special rule for the target install
 install: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	"C:\Program Files\JetBrains\CLion 2017.2.3\bin\cmake\bin\cmake.exe" -P cmake_install.cmake
+	C:\Users\CLion\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\172.4343.16\bin\cmake\bin\cmake.exe -P cmake_install.cmake
 .PHONY : install
 
 # Special rule for the target install
 install/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	"C:\Program Files\JetBrains\CLion 2017.2.3\bin\cmake\bin\cmake.exe" -P cmake_install.cmake
+	C:\Users\CLion\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\172.4343.16\bin\cmake\bin\cmake.exe -P cmake_install.cmake
 .PHONY : install/fast
 
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	"C:\Program Files\JetBrains\CLion 2017.2.3\bin\cmake\bin\cmake.exe" -E echo "No interactive CMake dialog available."
+	C:\Users\CLion\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\172.4343.16\bin\cmake\bin\cmake.exe -E echo "No interactive CMake dialog available."
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -127,7 +127,7 @@ edit_cache/fast: edit_cache
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	"C:\Program Files\JetBrains\CLion 2017.2.3\bin\cmake\bin\cmake.exe" -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	C:\Users\CLion\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\172.4343.16\bin\cmake\bin\cmake.exe -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -147,9 +147,9 @@ list_install_components/fast: list_install_components
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Piotr\Documents\CLionProjects\Gra\cmake-build-debug\CMakeFiles C:\Users\Piotr\Documents\CLionProjects\Gra\cmake-build-debug\CMakeFiles\progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\CLion\CLionProjects\gra\cmake-build-debug\CMakeFiles C:\Users\CLion\CLionProjects\gra\cmake-build-debug\CMakeFiles\progress.marks
 	$(MAKE) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Piotr\Documents\CLionProjects\Gra\cmake-build-debug\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\CLion\CLionProjects\gra\cmake-build-debug\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -189,6 +189,114 @@ Gra: cmake_check_build_system
 Gra/fast:
 	$(MAKE) -f CMakeFiles\Gra.dir\build.make CMakeFiles/Gra.dir/build
 .PHONY : Gra/fast
+
+GameManager.obj: GameManager.cpp.obj
+
+.PHONY : GameManager.obj
+
+# target to build an object file
+GameManager.cpp.obj:
+	$(MAKE) -f CMakeFiles\Gra.dir\build.make CMakeFiles/Gra.dir/GameManager.cpp.obj
+.PHONY : GameManager.cpp.obj
+
+GameManager.i: GameManager.cpp.i
+
+.PHONY : GameManager.i
+
+# target to preprocess a source file
+GameManager.cpp.i:
+	$(MAKE) -f CMakeFiles\Gra.dir\build.make CMakeFiles/Gra.dir/GameManager.cpp.i
+.PHONY : GameManager.cpp.i
+
+GameManager.s: GameManager.cpp.s
+
+.PHONY : GameManager.s
+
+# target to generate assembly for a file
+GameManager.cpp.s:
+	$(MAKE) -f CMakeFiles\Gra.dir\build.make CMakeFiles/Gra.dir/GameManager.cpp.s
+.PHONY : GameManager.cpp.s
+
+Map.obj: Map.cpp.obj
+
+.PHONY : Map.obj
+
+# target to build an object file
+Map.cpp.obj:
+	$(MAKE) -f CMakeFiles\Gra.dir\build.make CMakeFiles/Gra.dir/Map.cpp.obj
+.PHONY : Map.cpp.obj
+
+Map.i: Map.cpp.i
+
+.PHONY : Map.i
+
+# target to preprocess a source file
+Map.cpp.i:
+	$(MAKE) -f CMakeFiles\Gra.dir\build.make CMakeFiles/Gra.dir/Map.cpp.i
+.PHONY : Map.cpp.i
+
+Map.s: Map.cpp.s
+
+.PHONY : Map.s
+
+# target to generate assembly for a file
+Map.cpp.s:
+	$(MAKE) -f CMakeFiles\Gra.dir\build.make CMakeFiles/Gra.dir/Map.cpp.s
+.PHONY : Map.cpp.s
+
+Object.obj: Object.cpp.obj
+
+.PHONY : Object.obj
+
+# target to build an object file
+Object.cpp.obj:
+	$(MAKE) -f CMakeFiles\Gra.dir\build.make CMakeFiles/Gra.dir/Object.cpp.obj
+.PHONY : Object.cpp.obj
+
+Object.i: Object.cpp.i
+
+.PHONY : Object.i
+
+# target to preprocess a source file
+Object.cpp.i:
+	$(MAKE) -f CMakeFiles\Gra.dir\build.make CMakeFiles/Gra.dir/Object.cpp.i
+.PHONY : Object.cpp.i
+
+Object.s: Object.cpp.s
+
+.PHONY : Object.s
+
+# target to generate assembly for a file
+Object.cpp.s:
+	$(MAKE) -f CMakeFiles\Gra.dir\build.make CMakeFiles/Gra.dir/Object.cpp.s
+.PHONY : Object.cpp.s
+
+Tile.obj: Tile.cpp.obj
+
+.PHONY : Tile.obj
+
+# target to build an object file
+Tile.cpp.obj:
+	$(MAKE) -f CMakeFiles\Gra.dir\build.make CMakeFiles/Gra.dir/Tile.cpp.obj
+.PHONY : Tile.cpp.obj
+
+Tile.i: Tile.cpp.i
+
+.PHONY : Tile.i
+
+# target to preprocess a source file
+Tile.cpp.i:
+	$(MAKE) -f CMakeFiles\Gra.dir\build.make CMakeFiles/Gra.dir/Tile.cpp.i
+.PHONY : Tile.cpp.i
+
+Tile.s: Tile.cpp.s
+
+.PHONY : Tile.s
+
+# target to generate assembly for a file
+Tile.cpp.s:
+	$(MAKE) -f CMakeFiles\Gra.dir\build.make CMakeFiles/Gra.dir/Tile.cpp.s
+.PHONY : Tile.cpp.s
 
 main.obj: main.cpp.obj
 
@@ -232,6 +340,18 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... list_install_components
+	@echo ... GameManager.obj
+	@echo ... GameManager.i
+	@echo ... GameManager.s
+	@echo ... Map.obj
+	@echo ... Map.i
+	@echo ... Map.s
+	@echo ... Object.obj
+	@echo ... Object.i
+	@echo ... Object.s
+	@echo ... Tile.obj
+	@echo ... Tile.i
+	@echo ... Tile.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
