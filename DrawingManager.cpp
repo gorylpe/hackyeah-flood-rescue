@@ -5,6 +5,7 @@
 #include <SFML/Graphics/Sprite.hpp>
 #include <iostream>
 #include "DrawingManager.h"
+#include "UIManager.h"
 
 DrawingManager::DrawingManager() {
     window = new sf::RenderWindow(sf::VideoMode(windowWidth, windowHeight), "Game");
@@ -64,6 +65,8 @@ void DrawingManager::draw(Map *map, std::vector<Object *>* objectsArray) {
             }
         }
     }
+
+    UIManager::getSingleton().draw(window);
 
     window->display();
 }

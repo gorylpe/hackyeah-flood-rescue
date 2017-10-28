@@ -24,7 +24,7 @@ public:
     int getY();
     int getWidth();
     int getHeight();
-    virtual void draw(sf::RenderWindow);
+    virtual void draw(sf::RenderWindow *window);
 };
 
 

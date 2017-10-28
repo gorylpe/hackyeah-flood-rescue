@@ -18,9 +18,9 @@ void UILabel::setValue(std::string value) {
     this->value = value;
 }
 
-void UILabel::draw(sf::RenderWindow window) {
+void UILabel::draw(sf::RenderWindow *window) {
     sf::Text text;
     text.setString(value);
     text.setPosition(x, y);
-    window.draw(text);
+    window->draw(text);
 }

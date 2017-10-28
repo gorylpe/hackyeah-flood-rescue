@@ -17,7 +17,7 @@ public:
     std::string getValue();
     void setValue(std::string value);
 
-    void draw(sf::RenderWindow window);
+    void draw(sf::RenderWindow *window);
 };
 
 
