@@ -75,8 +75,8 @@ void GameManager::handleEvents() {
             case sf::Event::MouseButtonPressed:
                 switch (e.mouseButton.button) {
                     case sf::Mouse::Left:
-                        int x = drawingManager->getViewportX(e.mouseButton.x);
-                        int y = drawingManager->getViewportY(e.mouseButton.y);
+                        int x = drawingManager->getViewportTileX(e.mouseButton.x);
+                        int y = drawingManager->getViewportTileY(e.mouseButton.y);
                         Object *object = ObjectManager::getSingleton().getObjectAt(x, y);
                         // TODO: direct click to UI
                         break;
