@@ -12,6 +12,7 @@
 class UIElement {
 protected:
     int x, y, width, height;
+    bool visible;
 
 public:
     UIElement(int _x, int _y, int _width, int _height)
@@ -19,13 +20,14 @@ public:
              y(_y),
              width(_width),
              height(_height){}
-public:
+
     int getX(){return x;}
     int getY(){return y;}
     int getWidth(){return width;}
     int getHeight(){return height;}
 
     virtual void draw(sf::RenderWindow *window) = 0;
+    void setVisible(bool visible);
 };
 
 

@@ -21,12 +21,14 @@ void UILabel::setValue(std::string value) {
 }
 
 void UILabel::draw(sf::RenderWindow *window) {
-    auto bounds = text->getLocalBounds();
-    frame->setPosition(x, y);
-    frame->setSize(sf::Vector2f(bounds.width + margin, bounds.height + margin));
-    window->draw(*frame);
-    text->setPosition(x + margin, y + margin);
-    window->draw(*text);
+    if (visible) {
+        auto bounds = text->getLocalBounds();
+        frame->setPosition(x, y);
+        frame->setSize(sf::Vector2f(bounds.width + margin, bounds.height + margin));
+        window->draw(*frame);
+        text->setPosition(x + margin, y + margin);
+        window->draw(*text);
+    }
 }
 
 void UILabel::setFont(sf::Font *font) {

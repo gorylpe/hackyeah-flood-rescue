@@ -3,3 +3,7 @@
 //
 
 #include "UIElement.h"
+
+void UIElement::setVisible(bool visible) {
+    this->visible = visible;
+}
