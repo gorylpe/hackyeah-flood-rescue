@@ -30,3 +30,5 @@ public:
     void        setTileType(TILETYPE newTileType){ tileType = newTileType; }
 
 };
+
+#endif

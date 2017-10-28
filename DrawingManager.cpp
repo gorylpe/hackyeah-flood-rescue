@@ -3,6 +3,7 @@
 //
 
 #include <SFML/Graphics/Sprite.hpp>
+#include <iostream>
 #include "DrawingManager.h"
 
 DrawingManager::DrawingManager() {
@@ -12,26 +13,26 @@ DrawingManager::DrawingManager() {
 }
 
 void DrawingManager::loadSprites(){
-    textureMap = new std::map<Tile::TILETYPE, sf::Texture*>();
+    textureMap = new std::vector<sf::Texture*>();
     auto* texture = new sf::Texture();
     texture->loadFromFile("sprites/water.png");
-    textureMap->insert(std::pair<>(Tile::TILETYPE::WATER, texture));
+    textureMap->push_back(texture);
 
     texture = new sf::Texture();
     texture->loadFromFile("sprites/building.png");
-    textureMap->insert(std::pair<>(Tile::TILETYPE::BUILDING, texture));
+    textureMap->push_back(texture);
 
     texture = new sf::Texture();
     texture->loadFromFile("sprites/grass.png");
-    textureMap->insert(std::pair<>(Tile::TILETYPE::GRASS, texture));
+    textureMap->push_back(texture);
 
     texture = new sf::Texture();
     texture->loadFromFile("sprites/forest.png");
-    textureMap->insert(std::pair<>(Tile::TILETYPE::FOREST, texture));
+    textureMap->push_back(texture);
 
     texture = new sf::Texture();
     texture->loadFromFile("sprites/road.png");
-    textureMap->insert(std::pair<>(Tile::TILETYPE::ROAD, texture));
+    textureMap->push_back(texture);
 }
 
 void DrawingManager::draw(Map *map, std::vector<Object *> *objectsArray) {
@@ -41,7 +42,7 @@ void DrawingManager::draw(Map *map, std::vector<Object *> *objectsArray) {
         for(int j = vy; j <= vy + vh; ++j){
             sf::Sprite sprite;
             sprite.setTexture(*textureMap->at(map->getTile(i, j)->getTileType()));
-            sprite.setPosition(i, j);
+            sprite.setPosition(i * tileWidth, j * tileHeight);
             window->draw(sprite);
         }
     }

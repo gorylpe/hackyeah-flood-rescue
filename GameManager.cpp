@@ -2,6 +2,7 @@
 // Created by pietrk01 on 10/28/2017.
 //
 
+#include <iostream>
 #include "GameManager.h"
 #include "ObjectManager.h"
 #include "MapLoader.h"
@@ -15,6 +16,7 @@ GameManager::GameManager() {
     isGameRunning = true;
     gameState = GAME;
     map = MapLoader::loadMap("map1.txt");
+    std::cout << map->getTile(0, 0)->getTileType() << std::endl;
 }
 
 GameManager::~GameManager() {
@@ -25,12 +27,10 @@ void GameManager::mainLoop() {
     while(isGameRunning){
         frameClock.restart();
         switch(gameState){
-            case GAME:
+            case GAMESTATE::GAME:
                 gameLoop();
                 sf::Time loopTime = frameClock.restart();
                 sf::sleep(frameTime - loopTime);
-                break;
-            case MENU:
                 break;
         }
     }

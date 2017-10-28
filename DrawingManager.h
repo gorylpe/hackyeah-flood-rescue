@@ -40,7 +40,7 @@ private:
 
     void loadSprites();
 
-    std::map<Tile::TILETYPE, sf::Texture*>* textureMap;
+    std::vector<sf::Texture*>* textureMap;
 public:
     static DrawingManager& getSingleton(){
         static DrawingManager singleton;
