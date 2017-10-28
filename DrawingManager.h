@@ -44,6 +44,9 @@ private:
     void loadSprites();
 
     std::vector<sf::Texture*>* textureMap;
+
+    bool debugMode = false;
+    bool showHeightLevels = false;
 public:
     static DrawingManager& getSingleton(){
         static DrawingManager singleton;
@@ -58,6 +61,10 @@ public:
 
     int getViewportTileX(int mouseX);
     int getViewportTileY(int mouseY);
+
+    void switchDebug(){debugMode = ~debugMode;};
+
+    void setShowHeightLevels(bool _set){showHeightLevels = _set;};
 };
 
 
