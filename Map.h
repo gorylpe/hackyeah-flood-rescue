@@ -4,15 +4,15 @@
 
 #ifndef GRA_MAP_H
 #define GRA_MAP_H
+#include "Tile.h"
 
 class Map {
 public:
     Map(int _width, int _height);
-    unsigned int getWaterLevel(int x, int y);
-    void setWaterLevel(int x, int y, int level);
+    Tile *getTile(int x, int y);
 private:
     int width, height;
-    int **waterLevels;
+    Tile ***tiles;
 };
 
 
