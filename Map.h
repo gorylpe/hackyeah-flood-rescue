@@ -13,7 +13,6 @@ public:
     int getWidth();
     int getHeight();
     void update();
-    void makeHigherLevelOfWater();
 private:
     int width, height;
     Tile ***tiles;

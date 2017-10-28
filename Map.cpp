@@ -53,11 +53,12 @@ void Map::update() {
      }
  }
 
-void Map::changingToWater(Tile* _water, Tile* _notWater) {
-    if (_notWater->getTileType() != Tile::TILETYPE::WATER) {
-        if (_notWater->getHeight() < _water->getHeight()) {
-            _notWater->setTileType(Tile::TILETYPE::WATER);
+void Map::changingToWater(Tile* water, Tile* notWater) {
+    if (notWater->getTileType() != Tile::TILETYPE::WATER) {
+        if (notWater->getHeight() < water->getHeight()) {
+            notWater->setTileType(Tile::TILETYPE::WATER);
         }
     }
+    notWater->setHeight(water->getHeight());
 }
 
