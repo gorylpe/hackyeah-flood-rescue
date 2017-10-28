@@ -1,6 +1,8 @@
 #include "GameManager.h"
 
 int main() {
-    GameManager::getSingleton().mainLoop();
+    GameManager *gameManager = &GameManager::getSingleton();
+    gameManager->setFrameTime(16);
+    gameManager->mainLoop();
     return 0;
 }
