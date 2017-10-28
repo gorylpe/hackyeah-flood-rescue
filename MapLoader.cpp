@@ -19,7 +19,7 @@ Map* MapLoader::loadMap(std::string filename) {
             file >> type >> height;
             Tile* tile = map->getTile(i, j);
             tile->setHeight(height);
-            tile->setTileType(static_cast<Tile::TILETYPE>(type));
+            tile->setTexture(static_cast<DrawableObject::TEXTURE>(type));
         }
     }
 

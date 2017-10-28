@@ -10,7 +10,7 @@ Map::Map(int _width, int _height):
     for (int i = 0; i < width; i++) {
         tiles[i] = new Tile*[height];
         for(int j = 0; j < height; ++j){
-            tiles[i][j] = new Tile(Tile::TILETYPE::WATER, 0);
+            tiles[i][j] = new Tile();
         }
     }
 }
@@ -31,7 +31,7 @@ void Map::update() {
   for(int i = 0; i < width; i++){
      for(int j = 0; j < height; j++){
          Tile* water = getTile(i, j);
-         if(water->getTileType() == Tile::TILETYPE::WATER){
+         if(water->getTexture() == DrawableObject::TEXTURE::WATER){
              if(i > 0){
                  Tile* notWater = getTile(i-1, j);
                  changingToWater(water, notWater);
@@ -54,9 +54,9 @@ void Map::update() {
  }
 
 void Map::changingToWater(Tile* _water, Tile* _notWater) {
-    if (_notWater->getTileType() != Tile::TILETYPE::WATER) {
+    if (_notWater->getTexture() != DrawableObject::TEXTURE::WATER) {
         if (_notWater->getHeight() < _water->getHeight()) {
-            _notWater->setTileType(Tile::TILETYPE::WATER);
+            _notWater->setTexture(DrawableObject::TEXTURE::WATER);
         }
     }
 }

@@ -16,34 +16,52 @@ void DrawingManager::loadSprites(){
     textureMap = new std::vector<sf::Texture*>();
     auto* texture = new sf::Texture();
     texture->loadFromFile("sprites/water.png");
+    texture->setSmooth(true);
     textureMap->push_back(texture);
 
     texture = new sf::Texture();
     texture->loadFromFile("sprites/building.png");
+    texture->setSmooth(true);
     textureMap->push_back(texture);
 
     texture = new sf::Texture();
     texture->loadFromFile("sprites/grass.png");
+    texture->setSmooth(true);
     textureMap->push_back(texture);
 
     texture = new sf::Texture();
     texture->loadFromFile("sprites/forest.png");
+    texture->setSmooth(true);
     textureMap->push_back(texture);
 
     texture = new sf::Texture();
     texture->loadFromFile("sprites/road.png");
+    texture->setSmooth(true);
+    textureMap->push_back(texture);
+
+    texture = new sf::Texture();
+    texture->loadFromFile("sprites/sandbags.png");
+    texture->setSmooth(true);
     textureMap->push_back(texture);
 }
 
-void DrawingManager::draw(Map *map, std::vector<Object *> *objectsArray) {
+void DrawingManager::draw(Map *map, std::vector<Object *>* objectsArray) {
     window->clear();
 
     for(int i = vx; i <= vx + vw; ++i){
         for(int j = vy; j <= vy + vh; ++j){
+            Tile* tile = map->getTile(i, j);
             sf::Sprite sprite;
-            sprite.setTexture(*textureMap->at(map->getTile(i, j)->getTileType()));
-            sprite.setPosition((i - vx) * tileWidth, (j - vy) * tileHeight);
+            int x = i - vx;
+            int y = j - vy;
+            sprite.setTexture(*textureMap->at(tile->getTexture()));
+            sprite.setPosition(x * tileWidth, y * tileHeight);
+            sprite.setScale(1.0 * tileWidth / sprite.getLocalBounds().width, 1.0 * tileHeight / sprite.getLocalBounds().height);
             window->draw(sprite);
+
+            if(tile->getSandbagsUp()){
+                sprite.setTexture(*textureMap->at(DrawableObject::TEXTURE::SANDBAGS));
+            }
         }
     }
 
