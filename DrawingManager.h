@@ -19,8 +19,8 @@ public:
     enum MOVEDIR{
         LEFT,
         RIGHT,
-        TOP,
-        BOTTOM
+        UP,
+        DOWN
     };
 private:
     DrawingManager();

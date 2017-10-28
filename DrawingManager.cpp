@@ -60,11 +60,11 @@ void DrawingManager::moveViewport(Map* map, DrawingManager::MOVEDIR dir) {
             vx += 1;
             if(vx + vw >= map->getWidth()) vx = map->getWidth() - vw - 1;
             break;
-        case TOP:
+        case UP:
             vy -= 1;
             if(vy < 0) vy = 0;
             break;
-        case BOTTOM:
+        case DOWN:
             vy += 1;
             if(vy + vh >= map->getHeight()) vy = map->getHeight() - vh - 1;
             break;
