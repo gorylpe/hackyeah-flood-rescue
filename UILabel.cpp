@@ -5,9 +5,10 @@
 #include <SFML/Graphics/Text.hpp>
 #include "UILabel.h"
 
-UILabel::UILabel(int _x, int _y, int _width, int _height):
-        UIElement(_x, _y, _width, _height) {
-
+UILabel::UILabel(int _x, int _y):
+        UIElement(_x, _y, 0, 0) {
+    this->text = new sf::Text();
+    this->frame = new sf::RectangleShape;
 }
 
 std::string UILabel::getValue() {
@@ -16,21 +17,38 @@ std::string UILabel::getValue() {
 
 void UILabel::setValue(std::string value) {
     this->value = value;
+    this->text->setString(value);
 }
 
 void UILabel::draw(sf::RenderWindow *window) {
-    sf::Text text;
-    text.setFont(*font);
-    text.setFillColor(color);
-    text.setString(value);
-    text.setPosition(x, y);
-    window->draw(text);
+    auto bounds = text->getLocalBounds();
+    frame->setPosition(x, y);
+    frame->setSize(sf::Vector2f(bounds.width + margin, bounds.height + margin));
+    window->draw(*frame);
+    text->setPosition(x + margin, y + margin);
+    window->draw(*text);
 }
 
 void UILabel::setFont(sf::Font *font) {
-    this->font = font;
+    this->text->setFont(*font);
 }
 
 void UILabel::setColor(sf::Color color) {
-    this->color = color;
+    this->text->setFillColor(color);
+}
+
+int UILabel::getHeight() {
+    return this->text->getLocalBounds().height + margin;
+}
+
+int UILabel::getWidth() {
+    return this->text->getLocalBounds().width + margin;
+}
+
+void UILabel::setMargin(int margin) {
+    this->margin = margin;
+}
+
+void UILabel::setFrameColor(sf::Color color) {
+    this->frame->setFillColor(color);
 }
