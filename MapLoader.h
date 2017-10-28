@@ -10,7 +10,7 @@
 
 class MapLoader {
 public:
-    Map* loadMap(std::string filename);
+    static Map* loadMap(std::string filename);
 };
 
 

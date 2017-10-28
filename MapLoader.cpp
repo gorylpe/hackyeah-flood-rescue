@@ -5,7 +5,7 @@
 #include <fstream>
 #include "MapLoader.h"
 
-Map *MapLoader::loadMap(std::string filename) {
+static Map *MapLoader::loadMap(std::string filename) {
     std::ifstream file;
     file.open(filename);
     int width, height;
