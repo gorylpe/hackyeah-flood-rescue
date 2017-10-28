@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 11)
 
 set(EXECUTABLE_NAME "Gra")
 
-set(SOURCE_FILES main.cpp GameManager.cpp GameManager.h Tile.cpp Tile.h)
+set(SOURCE_FILES main.cpp Tile.cpp Tile.h Object.cpp Object.h GameManager.cpp GameManager.h DrawingManager.cpp DrawingManager.h Map.cpp Map.h)
 add_executable(${EXECUTABLE_NAME} ${SOURCE_FILES})
 
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake_modules" ${CMAKE_MODULE_PATH})
