@@ -73,7 +73,7 @@ void GameManager::handleEvents() {
                         drawingManager->moveViewport(map, DrawingManager::DOWN);
                         break;
                     case sf::Keyboard::R:
-                        reloadMap();
+                        resetMap();
                         break;
                     default:
                         break;

@@ -28,9 +28,7 @@ Object *ObjectManager::getObjectAt(int x, int y) {
 }
 
 void ObjectManager::resetObjects() {
-    for (int i = 0; i < objects->size(); i++) {
-         delete objects[i];
-    }
+    objects->erase(objects->begin(), objects->end());
     delete objects;
     objects = ObjectLoader::loadObjects("objects1.txt");
 }

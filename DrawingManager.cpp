@@ -10,6 +10,9 @@
 DrawingManager::DrawingManager() {
     window = new sf::RenderWindow(sf::VideoMode(windowWidth, windowHeight), "Game");
 
+    font = new sf::Font();
+    font->loadFromFile("Roboto-Regular.ttf");
+
     loadSprites();
 }
 
@@ -104,6 +107,22 @@ void DrawingManager::draw(Map *map, std::vector<Object *>* objectsArray) {
                 sprite.setPosition(x * tileWidth, y * tileHeight);
                 window->draw(sprite);
             }
+
+            sf::Text coords;
+            coords.setFont(*font);
+            coords.setCharacterSize(10);
+            coords.setFillColor(sf::Color::White);
+            coords.setString(std::to_string(i) + "x" + std::to_string(j));
+            coords.setPosition(x * tileWidth, y * tileWidth);
+            window->draw(coords);
+
+            sf::Text height;
+            height.setFont(*font);
+            height.setCharacterSize(12);
+            height.setFillColor(sf::Color::Black);
+            height.setString(std::to_string(tile->getHeight()));
+            height.setPosition((x + 0.5) * tileWidth, (y + 0.5) * tileWidth);
+            window->draw(height);
 
             for(int k = 0; k < objectsArray->size(); ++k){
                 Object* object = objectsArray->at(k);

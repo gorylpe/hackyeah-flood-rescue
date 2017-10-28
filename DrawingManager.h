@@ -10,6 +10,7 @@
 #include <SFML/Graphics/Texture.hpp>
 #include <map>
 #include <SFML/Graphics/RenderWindow.hpp>
+#include <SFML/Graphics/Font.hpp>
 #include "Map.h"
 #include "Object.h"
 #include "Tile.h"
@@ -25,6 +26,8 @@ public:
 private:
     DrawingManager();
     DrawingManager(const DrawingManager&){};
+
+    sf::Font *font;
 
     const int windowWidth = 800;
     const int windowHeight = 600;
