@@ -8,11 +8,11 @@
 class Tile {
 public:
     enum TILETYPE {
-        WATER,
-        BUILDING,
-        GRASS,
-        FOREST,
-        ROAD
+        WATER = 0,
+        BUILDING = 1,
+        GRASS = 2,
+        FOREST = 3,
+        ROAD = 4
     };
 private:
     TILETYPE tileType;

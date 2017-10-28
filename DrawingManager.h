@@ -30,8 +30,9 @@ private:
     const int windowHeight = 600;
     sf::RenderWindow* window;
 
-    const int tileWidth = 40;
-    const int tileHeight = 40;
+    int tileWidth = 40;
+    int tileHeight = 40;
+    //viewport
     int vx = 0;
     int vy = 0;
     int vw = windowWidth / tileWidth;
@@ -46,9 +47,11 @@ public:
         return singleton;
     }
 
+    sf::RenderWindow* getWindow(){return window;}
+
     void draw(Map* map, std::vector<Object*>* objectsArray);
 
-    void moveViewport(MOVEDIR dir);
+    void moveViewport(Map* map, MOVEDIR dir);
 };
 
 

@@ -5,6 +5,9 @@
 #include <SFML/Graphics.hpp>
 #ifndef GRA_GAMEMANAGER_H
 #define GRA_GAMEMANAGER_H
+#include "DrawingManager.h"
+#include "GameManager.h"
+#include "Map.h"
 
 
 class GameManager {
@@ -16,6 +19,7 @@ class GameManager {
     };
     GAMESTATE gameState;
     bool isGameRunning;
+    Map *map;
 
     GameManager();
     GameManager(const GameManager &);
