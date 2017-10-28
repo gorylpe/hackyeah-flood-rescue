@@ -9,6 +9,7 @@
 #include <vector>
 #include <SFML/Graphics/Texture.hpp>
 #include <map>
+#include <SFML/Graphics/RenderWindow.hpp>
 #include "Map.h"
 #include "Object.h"
 #include "Tile.h"
@@ -17,7 +18,13 @@ class DrawingManager {
     DrawingManager();
     DrawingManager(const DrawingManager&){};
 
-    std::map<Tile::TILETYPE, sf::Texture>* textureMap;
+    const int windowWidth = 800;
+    const int windowHeight = 600;
+    sf::RenderWindow* window;
+
+    void loadSprites();
+
+    std::map<Tile::TILETYPE, sf::Texture*>* textureMap;
 public:
     static DrawingManager& getSingleton(){
         static DrawingManager singleton;
