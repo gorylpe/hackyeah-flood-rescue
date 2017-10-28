@@ -73,6 +73,15 @@ void GameManager::handleEvents() {
                         drawingManager->moveViewport(map, DrawingManager::DOWN);
                         break;
                 }
+            case sf::Event::MouseButtonPressed:
+                switch (e.mouseButton.button) {
+                    case sf::Mouse::Left:
+                        int x = drawingManager->getViewportX(e.mouseButton.x);
+                        int y = drawingManager->getViewportY(e.mouseButton.y);
+                        Object *object = ObjectManager::getSingleton().getObjectAt(x, y);
+                        // TODO: direct click to UI
+                        break;
+                }
         }
     }
 

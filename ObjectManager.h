@@ -16,6 +16,7 @@ class ObjectManager {
 public:
     static ObjectManager& getSingleton();
     std::vector<Object*> *getObjects();
+    Object *getObjectAt(int x, int y);
 };
 
 

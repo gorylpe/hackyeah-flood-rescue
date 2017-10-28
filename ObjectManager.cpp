@@ -17,3 +17,12 @@ ObjectManager &ObjectManager::getSingleton() {
     return singleton;
 }
 
+Object *ObjectManager::getObjectAt(int x, int y) {
+    for (int i = 0; i < objects->size(); i++) {
+        if ((*objects)[i]->getX() == x && (*objects)[i]->getY() == y) {
+           return (*objects)[i];
+        }
+    }
+    return nullptr;
+}
+

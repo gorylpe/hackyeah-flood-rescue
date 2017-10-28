@@ -20,6 +20,11 @@ public:
 
     std::string getName(){return name;}
     virtual void update(Map* map);
+    int getX() { return x; }
+    void setX(int x) { this->x = x; }
+    int getY() { return y; }
+    void setY(int y) { this->y = y; }
+
 };
 
 
