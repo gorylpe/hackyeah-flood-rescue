@@ -95,7 +95,7 @@ void GameManager::handleEvents() {
 void GameManager::resetMap(){
     delete map;
     map = MapLoader::loadMap("map1.txt");
-    ObjectManager::resetObjects();
+    ObjectManager::getSingleton().resetObjects();
 }
 
 void GameManager::doObjectsIteration(){
