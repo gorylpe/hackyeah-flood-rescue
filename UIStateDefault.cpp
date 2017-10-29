@@ -37,6 +37,7 @@ void UIStateDefault::handleClick(int x, int y) {
         Object *object = ObjectManager::getSingleton().getObjectAt(_x, _y);
         std::cout << "Clicked on " << _x << " - " << _y << std::endl;
         if (object != nullptr) {
+            if (!object->getActive()) return;
             ObjectFirestation* objectFirestation = dynamic_cast<ObjectFirestation*>(object);
             ObjectFiretruck* objectFiretruck = dynamic_cast<ObjectFiretruck*>(object);
             ObjectHelicopter* objectHelicopter = dynamic_cast<ObjectHelicopter*>(object);
