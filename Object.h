@@ -38,6 +38,7 @@ public:
     void setObjectType(OBJECTTYPE _objectType){objectType = _objectType;}
     OBJECTTYPE getObjectType(){return objectType;}
     void kill() { active = false; }
+    bool getActive() { return active; }
 
 };
 
