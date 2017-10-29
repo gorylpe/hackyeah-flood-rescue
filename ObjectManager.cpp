@@ -19,10 +19,22 @@ ObjectManager &ObjectManager::getSingleton() {
     return singleton;
 }
 
-ObjectFirestation *ObjectManager::getObjectAt(int x, int y) {
+Object* ObjectManager::getObjectAt(int x, int y) {
     for (int i = 0; i < firestations->size(); i++) {
         if ((*firestations)[i]->getX() == x && (*firestations)[i]->getY() == y) {
            return (*firestations)[i];
+        }
+        std::vector<ObjectFiretruck*>* firetrucks = firestations->at(i)->getFiretrucks();
+        for(ObjectFiretruck* firetruck : *firetrucks){
+            if (firetruck->getX() == x && firetruck->getY() == y) {
+                return firetruck;
+            }
+        }
+        std::vector<ObjectHelicopter*>* Helicopters = firestations->at(i)->getHelicopters();
+        for(ObjectHelicopter* helicopter : *Helicopters){
+            if (helicopter->getX() == x && helicopter->getY() == y) {
+                return helicopter;
+            }
         }
     }
     return nullptr;

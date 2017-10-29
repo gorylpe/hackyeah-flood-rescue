@@ -18,7 +18,7 @@ class ObjectManager {
 public:
     static ObjectManager& getSingleton();
     std::vector<ObjectFirestation*> *getFirestations();
-    ObjectFirestation *getObjectAt(int x, int y);
+    Object* getObjectAt(int x, int y);
 
     void resetObjects();
 };
