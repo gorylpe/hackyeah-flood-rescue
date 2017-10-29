@@ -61,7 +61,7 @@ void DrawingManager::loadSprites(){
     textureMap->push_back(texture);
 }
 
-void DrawingManager::draw(Map *map, std::vector<Object *>* objectsArray) {
+void DrawingManager::draw(Map *map, std::vector<ObjectFirestation*>* firestationsArray) {
     window->clear();
 
     for(int i = vx; i <= vx + vw; ++i){
@@ -113,25 +113,27 @@ void DrawingManager::draw(Map *map, std::vector<Object *>* objectsArray) {
     }
 
     sf::Sprite sprite;
-    for(int k = 0; k < objectsArray->size(); ++k){
-        Object* object = objectsArray->at(k);
-        int x = object->getX() - vx;
-        int y = object->getY() - vy;
-        sprite.setTexture(*textureMap->at(object->getTexture()));
+    for(int k = 0; k < firestationsArray->size(); ++k){
+        ObjectFirestation* firestation = firestationsArray->at(k);
+        int x = firestation->getX() - vx;
+        int y = firestation->getY() - vy;
+        sprite.setTexture(*textureMap->at(firestation->getTexture()));
         sprite.setScale(1.0 * tileWidth / sprite.getLocalBounds().width, 1.0 * tileHeight / sprite.getLocalBounds().height);
         sprite.setPosition(x * tileWidth, y * tileHeight);
         window->draw(sprite);
 
-        ObjectFiretruck* objectFiretruck = dynamic_cast<ObjectFiretruck*>(object);
-        if(objectFiretruck != nullptr){
+        std::vector<ObjectFiretruck*>* objectsFiretrucks = firestation->getFiretrucks();
+        for(ObjectFiretruck* objectFiretruck : *objectsFiretrucks){
             std::vector<sf::Vector2i>* path = objectFiretruck->getPath();
-            for(sf::Vector2i v : *path){
-                int pathX = v.x - vx;
-                int pathY = v.y - vy;
-                sf::CircleShape shape(3);
-                shape.setFillColor(sf::Color::Yellow);
-                shape.setPosition((pathX + 0.5) * tileWidth - 3, (pathY + 0.5) * tileHeight - 3);
-                window->draw(shape);
+            if(path != nullptr) {
+                for (sf::Vector2i v : *path) {
+                    int pathX = v.x - vx;
+                    int pathY = v.y - vy;
+                    sf::CircleShape shape(3);
+                    shape.setFillColor(sf::Color::Yellow);
+                    shape.setPosition((pathX + 0.5) * tileWidth - 3, (pathY + 0.5) * tileHeight - 3);
+                    window->draw(shape);
+                }
             }
         }
     }
@@ -147,7 +149,7 @@ void DrawingManager::draw(Map *map, std::vector<Object *>* objectsArray) {
                 coords.setCharacterSize(10);
                 coords.setFillColor(sf::Color::White);
                 coords.setString(std::to_string(i) + "x" + std::to_string(j));
-                coords.setPosition(x * tileWidth, y * tileWidth);
+                coords.setPosition(x * tileWidth, y * tileHeight);
                 window->draw(coords);
             }
 
@@ -159,7 +161,7 @@ void DrawingManager::draw(Map *map, std::vector<Object *>* objectsArray) {
                 height.setOutlineColor(sf::Color::White);
                 height.setOutlineThickness(2.0);
                 height.setString(std::to_string(tile->getHeight()));
-                height.setPosition((x + 0.25) * tileWidth, (y + 0.25) * tileWidth);
+                height.setPosition((x + 0.25) * tileWidth, (y + 0.25) * tileHeight);
                 window->draw(height);
             }
         }

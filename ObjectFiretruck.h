@@ -12,6 +12,8 @@
 class ObjectFiretruck : public Object {
     std::vector<sf::Vector2i>* path;
     int currentPositionInPath;
+
+    bool free;
 public:
     ObjectFiretruck(int _x, int _y);
     //TODO list of points to move
@@ -20,6 +22,9 @@ public:
     bool newPathTo(Map *map, int x, int y);
 
     std::vector<sf::Vector2i>* getPath(){return path;}
+
+    void setFree(bool _free){free = _free;};
+    bool isFree(){return free;};
 };
 
 

@@ -4,17 +4,14 @@
 
 #include "UIManager.h"
 #include "ObjectManager.h"
+#include "UIStateDefault.h"
 #include <iostream>
 
 UIManager::UIManager() {
-    elements = new std::vector<UIElement*>();
-    tooltip = new UILabel(0, 0);
-    tooltip->setColor(sf::Color::Black);
     font = new sf::Font();
     font->loadFromFile("Roboto-Regular.ttf");
-    tooltip->setFont(font);
-    tooltip->setMargin(0);
-    addElement(tooltip);
+
+    currentState = new UIStateDefault();
 }
 
 UIManager &UIManager::getSingleton() {
@@ -23,36 +20,18 @@ UIManager &UIManager::getSingleton() {
 }
 
 void UIManager::handleClick(int x, int y) {
-    UIElement *clicked = nullptr;
-    for (int i = 0; i < elements->size(); i++) {
-       if ((*elements)[i]->getRect().contains(x, y)) {
-           clicked = (*elements)[i];
-           break;
-       }
-    }
-
-    if (clicked != nullptr) {
-        clicked->onClick();
-    } else {
-        auto *drawingManager = &DrawingManager::getSingleton();
-        int _x = drawingManager->getViewportTileX(x);
-        int _y = drawingManager->getViewportTileY(y);
-        Object *object = ObjectManager::getSingleton().getObjectAt(_x, _y);
-        if (object != nullptr) {
-            std::cout << "Received a click at (" << object->getX() << ", " << object->getY() << ") on '"
-                      << object->getName()
-                      << "'" << std::endl;
-        }
-    }
+    currentState->handleClick(x, y);
 }
 
 void UIManager::draw(sf::RenderWindow *window) {
-    for (int i = 0; i < elements->size(); i++) {
-        (*elements)[i]->draw(window);
-    }
+    currentState->draw(window);
 }
 
-void UIManager::addElement(UIElement *element) {
-    elements->push_back(element);
+void UIManager::update() {
+    if(nextState != nullptr){
+        delete currentState;
+        currentState = nextState;
+        nextState = nullptr;
+    }
 }
 

@@ -9,10 +9,15 @@
 
 
 class ObjectHelicopter : public Object {
+
+    bool free;
 public:
     ObjectHelicopter(int _x, int _y);
 
     virtual void update(Map* map){};
+
+    void setFree(bool _free){free = _free;};
+    bool isFree(){return free;};
 };
 
 

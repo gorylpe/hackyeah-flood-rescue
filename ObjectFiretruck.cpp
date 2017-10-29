@@ -7,7 +7,9 @@
 #include "ObjectFiretruck.h"
 
 ObjectFiretruck::ObjectFiretruck(int _x, int _y)
-:Object(OBJECTTYPE::FIRETRUCK, DrawableObject::TEXTURE::FIRETRUCK, _x, _y) {}
+:Object(OBJECTTYPE::FIRETRUCK, DrawableObject::TEXTURE::FIRETRUCK, _x, _y)
+,free(true)
+,path(nullptr){}
 
 void ObjectFiretruck::update(Map *map) {
     if(path != nullptr){
@@ -124,6 +126,10 @@ bool ObjectFiretruck::newPathTo(Map *map, int x, int y){
     }
 
     std::reverse(path->begin(), path->end());
+
+    for(sf::Vector2i v : *path){
+        std::cout << v.x << " " << v.y << std::endl;
+    }
 
     for (int i = 0; i < map->getWidth(); i++) {
         delete dist[i];

@@ -43,7 +43,8 @@ void GameManager::setFrameTime(int time) {
 
 void GameManager::gameLoop() {
     handleEvents();
-    DrawingManager::getSingleton().draw(map, ObjectManager::getSingleton().getObjects());
+    UIManager::getSingleton().update();
+    DrawingManager::getSingleton().draw(map, ObjectManager::getSingleton().getFirestations());
 }
 
 void GameManager::handleEvents() {
