@@ -47,6 +47,7 @@ public:
     int getLoss() { return loss; }
     bool isPaused() { return paused; }
     int getFloodCountdown() { return floodCountdown; }
+    sf::Time getTickTime() { return tickTime; }
 };
 
 

@@ -219,7 +219,7 @@ void DrawingManager::draw(Map *map, std::vector<ObjectFirestation*>* firestation
 
     sf::Text pauseState;
     pauseState.setFont(*font);
-    pauseState.setFillColor(sf::Color::Red);
+    pauseState.setFillColor(sf::Color::Green);
     pauseState.setCharacterSize(16);
     pauseState.setPosition(20, windowHeight - 20);
     std::string message;
@@ -233,7 +233,16 @@ void DrawingManager::draw(Map *map, std::vector<ObjectFirestation*>* firestation
 
     int countdown = GameManager::getSingleton().getFloodCountdown();
     if (countdown > 0) {
-
+        sf::Text countdown;
+        countdown.setFont(*font);
+        countdown.setFillColor(sf::Color::Red);
+        countdown.setCharacterSize(16);
+        countdown.setPosition(20, windowHeight - 40);
+        std::string message = "Flood starts in: ";
+        int secondsTillStart = GameManager::getSingleton().getFloodCountdown() * GameManager::getSingleton().getTickTime().asSeconds();
+        message += std::to_string(secondsTillStart) + std::string(" seconds");
+        countdown.setString(message);
+        window->draw(countdown);
     }
     window->display();
 }
