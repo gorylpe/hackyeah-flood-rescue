@@ -194,11 +194,11 @@ void DrawingManager::moveViewport(Map* map, DrawingManager::MOVEDIR dir) {
 }
 
 int DrawingManager::getViewportTileX(int mouseX) {
-    return (mouseX / tileWidth) - vx;
+    return (mouseX / tileWidth) + vx;
 }
 
 int DrawingManager::getViewportTileY(int mouseY) {
-    return (mouseY / tileHeight) - vy;
+    return (mouseY / tileHeight) + vy;
 }
 
 void DrawingManager::setZoomLevel(int i) {
@@ -215,5 +215,6 @@ void DrawingManager::setZoomLevel(int i) {
     vw = windowWidth / tileWidth;
     vh = windowHeight / tileHeight;
 }
+
 
 
