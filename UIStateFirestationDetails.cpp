@@ -27,9 +27,12 @@ void UIStateFirestationDetails::draw(sf::RenderWindow *window) {
 
     window->draw(rect);
 
+    buttonTruck->setText(std::string("Truck(") + std::to_string(objectFirestation->getFreeFiretrucks()) + ")");
     buttonTruck->setX(x+5);
     buttonTruck->setY(y+5);
     buttonTruck->draw(window);
+
+    buttonHeli->setText(std::string("Heli(") + std::to_string(objectFirestation->getFreeHelicopters()) + ")");
     buttonHeli->setX(x+55);
     buttonHeli->setY(y+5);
     buttonHeli->draw(window);
