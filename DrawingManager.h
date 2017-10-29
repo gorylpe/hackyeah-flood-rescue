@@ -23,6 +23,8 @@ public:
         UP,
         DOWN
     };
+
+    //To Do... zooming out
 private:
     DrawingManager();
     DrawingManager(const DrawingManager&){};
