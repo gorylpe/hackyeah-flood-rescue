@@ -28,17 +28,17 @@ void UIStateFirestationDetails::draw(sf::RenderWindow *window) {
 
     window->draw(rect);
 
-    buttonTruck->setX(x+5);
-    buttonTruck->setY(y+5);
+    buttonTruck->setX(x+DrawingManager::getSingleton().getTileWidth() / 10);
+    buttonTruck->setY(y+DrawingManager::getSingleton().getTileHeight() / 10);
     buttonTruck->setWidth(DrawingManager::getSingleton().getTileWidth());
-    buttonTruck->setWidth(DrawingManager::getSingleton().getTileHeight());
-    buttonTruck->setFontSize(DrawingManager::getSingleton().getTileWidth() / 2.5);
+    buttonTruck->setHeight(DrawingManager::getSingleton().getTileHeight());
+    buttonTruck->setFontSize(DrawingManager::getSingleton().getTileWidth() / 4);
     buttonTruck->draw(window);
-    buttonHeli->setX(x+55);
-    buttonHeli->setY(y+5);
-    buttonTruck->setWidth(DrawingManager::getSingleton().getTileWidth());
-    buttonTruck->setWidth(DrawingManager::getSingleton().getTileHeight());
-    buttonTruck->setFontSize(DrawingManager::getSingleton().getTileWidth() / 2.5);
+    buttonHeli->setX(x+DrawingManager::getSingleton().getTileWidth() / 10 + width / 2);
+    buttonHeli->setY(y+DrawingManager::getSingleton().getTileHeight() / 10);
+    buttonHeli->setWidth(DrawingManager::getSingleton().getTileWidth());
+    buttonHeli->setHeight(DrawingManager::getSingleton().getTileHeight());
+    buttonHeli->setFontSize(DrawingManager::getSingleton().getTileWidth() / 4);
     buttonHeli->draw(window);
 }
 
