@@ -106,9 +106,9 @@ void GameManager::handleEvents() {
                 break;
             case sf::Event::MouseWheelMoved:
                 if (e.mouseWheel.delta > 0) {
-                    drawingManager->setZoomLevel(1);
+                    drawingManager->setZoomLevel(map, 1);
                 } else if (e.mouseWheel.delta < 0) {
-                    drawingManager->setZoomLevel(0);
+                    drawingManager->setZoomLevel(map, 0);
                 }
                 break;
         }

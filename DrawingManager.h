@@ -75,7 +75,7 @@ public:
 
     void setShowHeightLevels(bool _set){showHeightLevels = _set;};
 
-    void setZoomLevel(int i);
+    void setZoomLevel(Map* map, int i);
 };
 
 

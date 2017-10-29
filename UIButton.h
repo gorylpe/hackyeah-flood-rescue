@@ -16,6 +16,7 @@ public:
 
     void draw(sf::RenderWindow *window);
     void setFontSize(int size) { fontSize = size; }
+    void setText(std::string text) { this->text = text; }
 };
 
 
