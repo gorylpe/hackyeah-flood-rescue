@@ -14,6 +14,8 @@ class ObjectFiretruck : public Object {
     int currentPositionInPath;
 
     bool free;
+
+    int numberOfSandbags;
 public:
     ObjectFiretruck(int _x, int _y);
     //TODO list of points to move
@@ -25,6 +27,10 @@ public:
 
     void setFree(bool _free){free = _free;};
     bool isFree(){return free;};
+
+    int getNumberOfSandbags();
+
+    void setNumberOfSandbags(int i);
 };
 
 

@@ -8,18 +8,20 @@
 
 #include "ObjectFirestation.h"
 #include "UIState.h"
-#include "UIButton.h"
+#include "UITextLabel.h"
 
 class UIStateFiretruckDetails : public UIState{
     ObjectFiretruck *objectFiretruck;
 
-    UIButton* buttonSandbagsLeft;
-    UIButton* buttonSandbagsRight;
-    UIButton* buttonSandbagsUp;
-    UIButton* buttonSandbagsDown;
+    UITextLabel* buttonSandbagsLeft;
+    UITextLabel* buttonSandbagsRight;
+    UITextLabel* buttonSandbagsUp;
+    UITextLabel* buttonSandbagsDown;
 
-    UIButton* buttonReturnToBase;
-    UIButton* buttonMove;
+    UITextLabel* buttonReturnToBase;
+    UITextLabel* buttonMove;
+
+    UITextLabel* textSandbags;
 public:
     explicit UIStateFiretruckDetails(ObjectFiretruck *_objectFiretruck);
 
@@ -27,9 +29,10 @@ public:
 
     void handleClick(int x, int y) override;
 
-    void drawButton(UIButton *button, int plusx, int plusy);
+    void drawButton(UITextLabel *button, int plusx, int plusy);
 
-    void drawButton(sf::RenderWindow *window, UIButton *button, int plusx, int plusy);
+    void drawButton(sf::RenderWindow *window, UITextLabel *button, int plusx, int plusy);
+
 };
 
 

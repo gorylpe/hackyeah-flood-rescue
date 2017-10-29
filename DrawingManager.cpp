@@ -4,6 +4,8 @@
 
 #include <SFML/Graphics/Sprite.hpp>
 #include <iostream>
+#include <SFML/Graphics/CircleShape.hpp>
+#include <SFML/Graphics/Text.hpp>
 #include "DrawingManager.h"
 #include "UIManager.h"
 #include "ObjectFiretruck.h"
@@ -115,39 +117,39 @@ void DrawingManager::draw(Map *map, std::vector<ObjectFirestation*>* firestation
     sf::Sprite sprite;
     for(int k = 0; k < firestationsArray->size(); ++k){
         ObjectFirestation* firestation = firestationsArray->at(k);
-        if (!firestation->getActive()) {
-            continue;
-        }
         int x = firestation->getX() - vx;
         int y = firestation->getY() - vy;
-        sprite.setTexture(*textureMap->at(firestation->getTexture()));
-        sprite.setScale(1.0 * tileWidth / sprite.getLocalBounds().width, 1.0 * tileHeight / sprite.getLocalBounds().height);
-        sprite.setPosition(x * tileWidth, y * tileHeight);
-        window->draw(sprite);
+        if (firestation->getActive()) {
+            sf::Sprite sprite;
+            sprite.setTexture(*textureMap->at(firestation->getTexture()));
+            sprite.setScale(1.0 * tileWidth / sprite.getLocalBounds().width, 1.0 * tileHeight / sprite.getLocalBounds().height);
+            sprite.setPosition(x * tileWidth, y * tileHeight);
+            window->draw(sprite);
+        }
 
         std::vector<ObjectFiretruck*>* objectsFiretrucks = firestation->getFiretrucks();
         for(ObjectFiretruck* firetruck : *objectsFiretrucks){
-            if (!firetruck->getActive()) {
-                continue;
-            }
-            std::vector<sf::Vector2i>* path = firetruck->getPath();
-            if(path != nullptr) {
-                for (sf::Vector2i v : *path) {
-                    int pathX = v.x - vx;
-                    int pathY = v.y - vy;
-                    sf::CircleShape shape(3);
-                    shape.setFillColor(sf::Color::Yellow);
-                    shape.setPosition((pathX + 0.5) * tileWidth - 3, (pathY + 0.5) * tileHeight - 3);
-                    window->draw(shape);
+            if (firetruck->getActive()) {
+                std::vector<sf::Vector2i>* path = firetruck->getPath();
+                if(path != nullptr) {
+                    for (sf::Vector2i v : *path) {
+                        int pathX = v.x - vx;
+                        int pathY = v.y - vy;
+                        sf::CircleShape shape(3);
+                        shape.setFillColor(sf::Color::Yellow);
+                        shape.setPosition((pathX + 0.5) * tileWidth - 3, (pathY + 0.5) * tileHeight - 3);
+                        window->draw(shape);
+                    }
                 }
-            }
-            int fx = firetruck->getX() - vx;
-            int fy = firetruck->getY() - vy;
-            if(fx != x || fy != y){
-                sprite.setTexture(*textureMap->at(firetruck->getTexture()));
-                sprite.setScale(1.0 * tileWidth / sprite.getLocalBounds().width, 1.0 * tileHeight / sprite.getLocalBounds().height);
-                sprite.setPosition(fx * tileWidth, fy * tileHeight);
-                window->draw(sprite);
+                int fx = firetruck->getX() - vx;
+                int fy = firetruck->getY() - vy;
+                if(fx != x || fy != y){
+                    sf::Sprite sprite;
+                    sprite.setTexture(*textureMap->at(firetruck->getTexture()));
+                    sprite.setScale(1.0 * tileWidth / sprite.getLocalBounds().width, 1.0 * tileHeight / sprite.getLocalBounds().height);
+                    sprite.setPosition(fx * tileWidth, fy * tileHeight);
+                    window->draw(sprite);
+                }
             }
         }
     }

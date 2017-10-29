@@ -8,13 +8,13 @@
 
 #include "ObjectFirestation.h"
 #include "UIState.h"
-#include "UIButton.h"
+#include "UITextLabel.h"
 
 class UIStateFirestationDetails : public UIState {
     ObjectFirestation* objectFirestation;
 
-    UIButton* buttonTruck;
-    UIButton* buttonHeli;
+    UITextLabel* buttonTruck;
+    UITextLabel* buttonHeli;
 public:
     explicit UIStateFirestationDetails(ObjectFirestation *_objectFirestation);
 

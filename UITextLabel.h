@@ -8,15 +8,16 @@
 
 #include "UIElement.h"
 
-class UIButton : public UIElement{
+class UITextLabel : public UIElement{
     std::string text;
     int fontSize;
 public:
-    UIButton(int _x, int _y, int _width, int _height, std::string text);
+    UITextLabel(int _x, int _y, int _width, int _height, std::string text);
 
     void draw(sf::RenderWindow *window);
     void setFontSize(int size) { fontSize = size; }
     void setText(std::string text) { this->text = text; }
+    std::string getText() { return text; }
 };
 
 

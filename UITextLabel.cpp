@@ -4,16 +4,16 @@
 
 #include <SFML/Graphics/RectangleShape.hpp>
 #include <SFML/Graphics/Text.hpp>
-#include "UIButton.h"
+#include "UITextLabel.h"
 #include "DrawingManager.h"
 
-UIButton::UIButton(int _x, int _y, int _width, int _height, std::string _text)
+UITextLabel::UITextLabel(int _x, int _y, int _width, int _height, std::string _text)
 :UIElement(_x, _y, _width, _height),
 text(_text),
  fontSize(20)
 {}
 
-void UIButton::draw(sf::RenderWindow *window) {
+void UITextLabel::draw(sf::RenderWindow *window) {
     sf::RectangleShape rect;
     rect.setPosition(getX(), getY());
     rect.setFillColor(sf::Color::Yellow);
