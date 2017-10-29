@@ -18,9 +18,15 @@ void UIStateSendHelicopter::draw(sf::RenderWindow *window) {
 }
 
 void UIStateSendHelicopter::handleClick(int x, int y) {
-    bool pathExits = objectHelicopter->newPathTo(GameManager::getSingleton().getMap(), DrawingManager::getSingleton().getViewportTileX(x), DrawingManager::getSingleton().getViewportTileY(y));
-    if(pathExits){
-        objectHelicopter->setFree(false);
+    int newx = DrawingManager::getSingleton().getViewportTileX(x);
+    int newy = DrawingManager::getSingleton().getViewportTileY(y);
+    if(newx != objectHelicopter->getX() || newy != objectHelicopter->getY()){
+        bool pathExits = objectHelicopter->newPathTo(GameManager::getSingleton().getMap(), newx, newy);
+        if(pathExits){
+            objectHelicopter->setFree(false);
+        }
+    } else {
+        std::cout << "moving to same place" << std::endl;
     }
     UIManager::getSingleton().changeState(new UIStateDefault());
 }
