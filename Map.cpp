@@ -101,3 +101,13 @@ Map::~Map() {
     delete tiles;
 }
 
+void Map::setWaterLevel(int level) {
+    for (int i = 0; i < width; i++) {
+        for (int j = 0; j < height; j++) {
+            if (tiles[i][j]->getTexture() == DrawableObject::TEXTURE::WATER) {
+                tiles[i][j]->setHeight(level);
+            }
+        }
+    }
+}
+
