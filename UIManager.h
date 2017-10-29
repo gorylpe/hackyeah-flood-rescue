@@ -7,19 +7,27 @@
 #include "Object.h"
 #include "UIElement.h"
 #include "UILabel.h"
+#include "UIState.h"
 
 class UIManager {
     sf::Font *font;
-    std::vector<UIElement*> *elements;
     UILabel *tooltip;
     UIManager();
     UIManager(const UIManager&);
 
+    UIState* currentState;
+    UIState* nextState;
+
 public:
     static UIManager& getSingleton();
+
+    sf::Font* getFont(){return font;};
+
     void handleClick(int x, int y);
     void draw(sf::RenderWindow *window);
-    void addElement(UIElement *element);
+    void update();
+
+    void changeState(UIState* newState){nextState = newState;};
 };
 
 

@@ -7,11 +7,11 @@
 #include "ObjectFiretruck.h"
 
 ObjectManager::ObjectManager() {
-    objects = ObjectLoader::loadObjects("objects1.txt");
+    firestations = ObjectLoader::loadObjects("objects1.txt");
 }
 
-std::vector<Object *> *ObjectManager::getObjects() {
-    return objects;
+std::vector<ObjectFirestation *> *ObjectManager::getFirestations() {
+    return firestations;
 }
 
 ObjectManager &ObjectManager::getSingleton() {
@@ -19,18 +19,18 @@ ObjectManager &ObjectManager::getSingleton() {
     return singleton;
 }
 
-Object *ObjectManager::getObjectAt(int x, int y) {
-    for (int i = 0; i < objects->size(); i++) {
-        if ((*objects)[i]->getX() == x && (*objects)[i]->getY() == y) {
-           return (*objects)[i];
+ObjectFirestation *ObjectManager::getObjectAt(int x, int y) {
+    for (int i = 0; i < firestations->size(); i++) {
+        if ((*firestations)[i]->getX() == x && (*firestations)[i]->getY() == y) {
+           return (*firestations)[i];
         }
     }
     return nullptr;
 }
 
 void ObjectManager::resetObjects() {
-    objects->erase(objects->begin(), objects->end());
-    delete objects;
-    objects = ObjectLoader::loadObjects("objects1.txt");
+    firestations->erase(firestations->begin(), firestations->end());
+    delete firestations;
+    firestations = ObjectLoader::loadObjects("objects1.txt");
 }
 

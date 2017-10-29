@@ -7,12 +7,24 @@
 
 
 #include "Object.h"
+#include "ObjectFiretruck.h"
+#include "ObjectHelicopter.h"
 
 class ObjectFirestation : public Object{
+    std::vector<ObjectFiretruck*>* trucks;
+    std::vector<ObjectHelicopter *> *helis;
 public:
-    ObjectFirestation(int _x, int _y);
+    ObjectFirestation(int numberOfFiretrucks, int numberOfHelicopters, int _x, int _y);
 
     void update(Map* map) override;
+
+    int getFreeFiretrucks();
+    int getFreeHelicopters();
+
+    ObjectFiretruck *getFreeTruck();
+
+    std::vector<ObjectFiretruck*>* getFiretrucks(){ return trucks;};
+    std::vector<ObjectHelicopter*>* getHelicopters() { return helis;};
 };
 
 

@@ -35,6 +35,8 @@ public:
     void setFrameTime(int time);
 
     void doObjectsIteration();
+
+    Map* getMap(){return map;};
 };
 
 

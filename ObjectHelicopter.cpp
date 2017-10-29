@@ -5,4 +5,5 @@
 #include "ObjectHelicopter.h"
 
 ObjectHelicopter::ObjectHelicopter(int _x, int _y)
-:Object(OBJECTTYPE::HELICOPTER, DrawableObject::TEXTURE::HELI, _x, _y) {}
+:Object(OBJECTTYPE::HELICOPTER, DrawableObject::TEXTURE::HELI, _x, _y)
+,free(true){}

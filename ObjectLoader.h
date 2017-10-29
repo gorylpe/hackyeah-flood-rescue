@@ -8,10 +8,11 @@
 
 #include <vector>
 #include "Object.h"
+#include "ObjectFirestation.h"
 
 class ObjectLoader {
 public:
-    static std::vector<Object*>* loadObjects(std::string filename);
+    static std::vector<ObjectFirestation*>* loadObjects(std::string filename);
 };
 
 

@@ -14,6 +14,7 @@
 #include "Map.h"
 #include "Object.h"
 #include "Tile.h"
+#include "ObjectFirestation.h"
 
 class DrawingManager {
 public:
@@ -57,12 +58,17 @@ public:
 
     sf::RenderWindow* getWindow(){return window;}
 
-    void draw(Map* map, std::vector<Object*>* objectsArray);
+    void draw(Map* map, std::vector<ObjectFirestation*>* firestationsArray);
 
     void moveViewport(Map* map, MOVEDIR dir);
 
     int getViewportTileX(int mouseX);
     int getViewportTileY(int mouseY);
+
+    int getViewportX(){return vx;}
+    int getViewportY(){return vy;}
+    int getTileWidth(){return tileWidth;}
+    int getTileHeight(){return tileHeight;}
 
     void switchDebug(){debugMode = !debugMode;};
 

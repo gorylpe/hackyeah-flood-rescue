@@ -13,12 +13,12 @@
 class ObjectManager {
     ObjectManager();
     ObjectManager(const ObjectManager&);
-    std::vector<Object*> *objects;
+    std::vector<ObjectFirestation*> *firestations;
 
 public:
     static ObjectManager& getSingleton();
-    std::vector<Object*> *getObjects();
-    Object *getObjectAt(int x, int y);
+    std::vector<ObjectFirestation*> *getFirestations();
+    ObjectFirestation *getObjectAt(int x, int y);
 
     void resetObjects();
 };
