@@ -34,18 +34,13 @@ void UIStateFirestationDetails::draw(sf::RenderWindow *window) {
     buttonTruck->setHeight(DrawingManager::getSingleton().getTileHeight());
     buttonTruck->setFontSize(DrawingManager::getSingleton().getTileWidth() / 4);
     buttonTruck->setText(std::string("Truck(") + std::to_string(objectFirestation->getFreeFiretrucks()) + ")");
-    buttonTruck->setX(x+5);
-    buttonTruck->setY(y+5);
     buttonTruck->draw(window);
     buttonHeli->setX(x+DrawingManager::getSingleton().getTileWidth() / 10 + width / 2);
     buttonHeli->setY(y+DrawingManager::getSingleton().getTileHeight() / 10);
     buttonHeli->setWidth(DrawingManager::getSingleton().getTileWidth());
     buttonHeli->setHeight(DrawingManager::getSingleton().getTileHeight());
     buttonHeli->setFontSize(DrawingManager::getSingleton().getTileWidth() / 4);
-
     buttonHeli->setText(std::string("Heli(") + std::to_string(objectFirestation->getFreeHelicopters()) + ")");
-    buttonHeli->setX(x+55);
-    buttonHeli->setY(y+5);
     buttonHeli->draw(window);
 }
 
