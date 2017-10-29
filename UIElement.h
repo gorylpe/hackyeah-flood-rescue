@@ -28,6 +28,8 @@ public:
     void setY(int y) { this->y = y; }
     int getWidth(){return width;}
     int getHeight(){return height;}
+    void setWidth(int width) { this->width = width; }
+    void setHeight(int height) { this->height = height; }
     sf::IntRect getRect() { return sf::IntRect(x, y, width, height); }
     virtual void onClick() {};
 
