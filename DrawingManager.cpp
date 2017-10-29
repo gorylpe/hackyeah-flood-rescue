@@ -72,12 +72,14 @@ void DrawingManager::loadSprites(){
 void DrawingManager::draw(Map *map, std::vector<ObjectFirestation*>* firestationsArray) {
     window->clear();
 
-    for(int i = vx; i <= vx + vw; ++i){
-        for(int j = vy; j <= vy + vh; ++j){
+    int istart = vx, istop = std::min(vx+vw, GameManager::getSingleton().getMap()->getWidth() - 1);
+    int jstart = vy, jstop = std::min(vy+vh, GameManager::getSingleton().getMap()->getHeight() - 1);
+    for(int i = istart; i <= istop; ++i){
+        for(int j = jstart; j <= jstop; ++j){
             Tile* tile = map->getTile(i, j);
             sf::Sprite sprite;
-            int x = i - vx;
-            int y = j - vy;
+            int x = std::max(i - vx, 0);
+            int y = std::max(j - vy, 0);
             sprite.setTexture(*textureMap->at(tile->getTexture()));
             sprite.setPosition(x * tileWidth, y * tileHeight);
             sprite.setScale(1.0 * tileWidth / sprite.getLocalBounds().width, 1.0 * tileHeight / sprite.getLocalBounds().height);
@@ -123,8 +125,8 @@ void DrawingManager::draw(Map *map, std::vector<ObjectFirestation*>* firestation
     sf::Sprite sprite;
     for(int k = 0; k < firestationsArray->size(); ++k) {
         ObjectFirestation *firestation = firestationsArray->at(k);
-        int x = firestation->getX() - vx;
-        int y = firestation->getY() - vy;
+        int x = std::max(firestation->getX() - vx, 0);
+        int y = std::max(firestation->getY() - vy, 0);
         if (firestation->getActive()) {
             sf::Sprite sprite;
             sprite.setTexture(*textureMap->at(firestation->getTexture()));
@@ -186,8 +188,8 @@ void DrawingManager::draw(Map *map, std::vector<ObjectFirestation*>* firestation
         }
     }
 
-    for(int i = vx; i <= vx + vw; ++i) {
-        for (int j = vy; j <= vy + vh; ++j) {
+    for(int i = istart; i <= istop; ++i) {
+        for (int j = jstart; j <= jstop; ++j) {
             Tile* tile = map->getTile(i, j);
             int x = i - vx;
             int y = j - vy;
@@ -255,7 +257,7 @@ void DrawingManager::moveViewport(Map* map, DrawingManager::MOVEDIR dir) {
             break;
         case RIGHT:
             vx += 1;
-            if(vx + vw >= map->getWidth()) vx = map->getWidth() - vw - 1;
+            if(vx + vw >= map->getWidth()) vx = std::max(map->getWidth() - vw - 1, 0);
             break;
         case UP:
             vy -= 1;
@@ -263,7 +265,7 @@ void DrawingManager::moveViewport(Map* map, DrawingManager::MOVEDIR dir) {
             break;
         case DOWN:
             vy += 1;
-            if(vy + vh >= map->getHeight()) vy = map->getHeight() - vh - 1;
+            if(vy + vh >= map->getHeight()) vy = std::max(map->getHeight() - vh - 1, 0);
             break;
     }
 }
@@ -283,8 +285,8 @@ void DrawingManager::setZoomLevel(Map* map, int i) {
             tileWidth = 20;
             break;
         case 1:
-            tileHeight = 40;
-            tileWidth = 40;
+            tileHeight = 30;
+            tileWidth = 30;
             break;
     }
     vw = windowWidth / tileWidth;
