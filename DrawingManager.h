@@ -67,6 +67,7 @@ public:
     int getViewportY(){return vy;}
     int getTileWidth(){return tileWidth;}
     int getTileHeight(){return tileHeight;}
+    sf::Font *getFont() { return font; };
 
     void switchDebug(){debugMode = !debugMode;};
 
