@@ -10,6 +10,7 @@
 #include "UIManager.h"
 #include "ObjectFiretruck.h"
 #include "ObjectManager.h"
+#include "GameManager.h"
 
 DrawingManager::DrawingManager() {
     window = new sf::RenderWindow(sf::VideoMode(windowWidth, windowHeight), "Game");
@@ -216,6 +217,19 @@ void DrawingManager::draw(Map *map, std::vector<ObjectFirestation*>* firestation
 
     UIManager::getSingleton().draw(window);
 
+    sf::Text pauseState;
+    pauseState.setFont(*font);
+    pauseState.setFillColor(sf::Color::Red);
+    pauseState.setCharacterSize(16);
+    pauseState.setPosition(20, windowHeight - 20);
+    std::string message;
+    if (GameManager::getSingleton().isPaused()) {
+        message = "SPACE: unpause";
+    } else {
+        message = "SPACE: pause";
+    }
+    pauseState.setString(message);
+    window->draw(pauseState);
     window->display();
 }
 

@@ -19,7 +19,7 @@ GameManager::GameManager() {
     gameState = GAME;
     map = MapLoader::loadMap("map1.txt");
     tickTime = sf::seconds(0.75);
-    paused = false;
+    paused = true;
     iterationClock = new sf::Clock;
 }
 

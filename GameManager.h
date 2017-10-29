@@ -44,6 +44,7 @@ public:
 
     void addLoss(int n);
     int getLoss() { return loss; }
+    bool isPaused() { return paused; }
 };
 
 
