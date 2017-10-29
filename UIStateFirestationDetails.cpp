@@ -15,8 +15,8 @@ UIStateFirestationDetails::UIStateFirestationDetails(ObjectFirestation* _objectF
 }
 
 void UIStateFirestationDetails::draw(sf::RenderWindow *window) {
-    const int width = 100;
-    const int height = 50;
+    const int width = (int)(DrawingManager::getSingleton().getTileWidth() * 2.5);
+    const int height = (int)(DrawingManager::getSingleton().getTileWidth() * 1.25);
     int x = (objectFirestation->getX() - DrawingManager::getSingleton().getViewportX() - 1) * DrawingManager::getSingleton().getTileWidth();
     int y = (objectFirestation->getY() - DrawingManager::getSingleton().getViewportY() - 1) * DrawingManager::getSingleton().getTileHeight();
 
@@ -31,7 +31,7 @@ void UIStateFirestationDetails::draw(sf::RenderWindow *window) {
     buttonTruck->setY(y+5);
     buttonTruck->draw(window);
     buttonHeli->setX(x+55);
-    buttonHeli->setY(y+55);
+    buttonHeli->setY(y+5);
     buttonHeli->draw(window);
 }
 

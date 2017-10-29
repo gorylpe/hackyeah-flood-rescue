@@ -110,6 +110,7 @@ void GameManager::handleEvents() {
                 } else if (e.mouseWheel.delta < 0) {
                     drawingManager->setZoomLevel(0);
                 }
+                break;
         }
     }
 }
