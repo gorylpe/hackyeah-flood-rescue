@@ -12,12 +12,14 @@
 
 UIStateFiretruckDetails::UIStateFiretruckDetails(ObjectFiretruck *_objectFiretruck)
 :objectFiretruck(_objectFiretruck){
-    buttonSandbagsDown = new UIButton(0, 0, 40, 40, "\\/");
-    buttonSandbagsUp = new UIButton(0, 0, 40, 40, "^");
-    buttonSandbagsLeft = new UIButton(0, 0, 40, 40, "<");
-    buttonSandbagsRight = new UIButton(0, 0, 40, 40, ">");
-    buttonReturnToBase = new UIButton(0, 0, 40, 40, "Return");
-    buttonMove = new UIButton(0, 0, 40, 40, "Move");
+    buttonSandbagsDown = new UITextLabel(0, 0, 40, 40, "\\/\n(0)");
+    buttonSandbagsUp = new UITextLabel(0, 0, 40, 40, "^\n(0)");
+    buttonSandbagsLeft = new UITextLabel(0, 0, 40, 40, "<\n(0)");
+    buttonSandbagsRight = new UITextLabel(0, 0, 40, 40, ">\n(0)");
+    buttonReturnToBase = new UITextLabel(0, 0, 40, 40, "Return");
+    buttonMove = new UITextLabel(0, 0, 40, 40, "Move");
+
+    textSandbags = new UITextLabel(0, 0, 40, 40, "");
 }
 
 void UIStateFiretruckDetails::draw(sf::RenderWindow *window) {
@@ -45,9 +47,12 @@ void UIStateFiretruckDetails::draw(sf::RenderWindow *window) {
     drawButton(window, buttonSandbagsRight, 7*xdelta + 3*tWidth, 3*ydelta + tHeight);
     drawButton(window, buttonReturnToBase, 3*xdelta + tWidth, ydelta);
     drawButton(window, buttonMove, 5*xdelta + 2*tWidth, ydelta);
+
+    drawButton(window, textSandbags, xdelta, ydelta);
+    textSandbags->setText("Sand\n (" + std::to_string(objectFiretruck->getNumberOfSandbags()) + ")");
 }
 
-void UIStateFiretruckDetails::drawButton(sf::RenderWindow *window, UIButton* button, int plusx, int plusy){
+void UIStateFiretruckDetails::drawButton(sf::RenderWindow *window, UITextLabel* button, int plusx, int plusy){
     const int tWidth = DrawingManager::getSingleton().getTileWidth();
     const int tHeight = DrawingManager::getSingleton().getTileHeight();
     const int width = (int)(tWidth * 5);
@@ -66,29 +71,46 @@ void UIStateFiretruckDetails::drawButton(sf::RenderWindow *window, UIButton* but
 }
 
 void UIStateFiretruckDetails::handleClick(int x, int y) {
+    Tile* tile = GameManager::getSingleton().getMap()->getTile(objectFiretruck->getX(), objectFiretruck->getY());
     if(buttonSandbagsDown->getRect().contains(x, y)){
-        if(!GameManager::getSingleton().getMap()->getTile(objectFiretruck->getX(), objectFiretruck->getY())->getSandbagsDown()){
-            GameManager::getSingleton().getMap()->getTile(objectFiretruck->getX(), objectFiretruck->getY())->setSandbagsDown(true);
+        if(!tile->getSandbagsDown()){
+            if(objectFiretruck->getNumberOfSandbags()> 0) {
+                tile->setSandbagsDown(true);
+                objectFiretruck->setNumberOfSandbags(objectFiretruck->getNumberOfSandbags() - 1);
+            }
         } else {
-            GameManager::getSingleton().getMap()->getTile(objectFiretruck->getX(), objectFiretruck->getY())->setSandbagsDown(false);
+            tile->setSandbagsDown(false);
+            objectFiretruck->setNumberOfSandbags(objectFiretruck->getNumberOfSandbags() + 1);
         }
     } else if(buttonSandbagsUp->getRect().contains(x, y)) {
-        if(!GameManager::getSingleton().getMap()->getTile(objectFiretruck->getX(), objectFiretruck->getY())->getSandbagsUp()){
-            GameManager::getSingleton().getMap()->getTile(objectFiretruck->getX(), objectFiretruck->getY())->setSandbagsUp(true);
+        if(!tile->getSandbagsUp()){
+            if(objectFiretruck->getNumberOfSandbags()> 0) {
+                tile->setSandbagsUp(true);
+                objectFiretruck->setNumberOfSandbags(objectFiretruck->getNumberOfSandbags() - 1);
+            }
         } else {
-            GameManager::getSingleton().getMap()->getTile(objectFiretruck->getX(), objectFiretruck->getY())->setSandbagsUp(false);
+            tile->setSandbagsUp(false);
+            objectFiretruck->setNumberOfSandbags(objectFiretruck->getNumberOfSandbags() + 1);
         }
     } else if(buttonSandbagsLeft->getRect().contains(x, y)) {
-        if(!GameManager::getSingleton().getMap()->getTile(objectFiretruck->getX(), objectFiretruck->getY())->getSandbagsLeft()){
-            GameManager::getSingleton().getMap()->getTile(objectFiretruck->getX(), objectFiretruck->getY())->setSandbagsLeft(true);
+        if(!tile->getSandbagsLeft()){
+            if(objectFiretruck->getNumberOfSandbags()> 0) {
+                tile->setSandbagsLeft(true);
+                objectFiretruck->setNumberOfSandbags(objectFiretruck->getNumberOfSandbags() - 1);
+            }
         } else {
-            GameManager::getSingleton().getMap()->getTile(objectFiretruck->getX(), objectFiretruck->getY())->setSandbagsLeft(false);
+            tile->setSandbagsLeft(false);
+            objectFiretruck->setNumberOfSandbags(objectFiretruck->getNumberOfSandbags() + 1);
         }
     } else if(buttonSandbagsRight->getRect().contains(x, y)) {
-        if(!GameManager::getSingleton().getMap()->getTile(objectFiretruck->getX(), objectFiretruck->getY())->getSandbagsRight()){
-            GameManager::getSingleton().getMap()->getTile(objectFiretruck->getX(), objectFiretruck->getY())->setSandbagsRight(true);
+        if(!tile->getSandbagsRight()){
+            if(objectFiretruck->getNumberOfSandbags()> 0) {
+                tile->setSandbagsRight(true);
+                objectFiretruck->setNumberOfSandbags(objectFiretruck->getNumberOfSandbags() - 1);
+            }
         } else {
-            GameManager::getSingleton().getMap()->getTile(objectFiretruck->getX(), objectFiretruck->getY())->setSandbagsRight(false);
+            tile->setSandbagsRight(false);
+            objectFiretruck->setNumberOfSandbags(objectFiretruck->getNumberOfSandbags() + 1);
         }
     } else if(buttonReturnToBase->getRect().contains(x, y)) {
         //TODO

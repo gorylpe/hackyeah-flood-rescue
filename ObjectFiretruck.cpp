@@ -9,7 +9,8 @@
 ObjectFiretruck::ObjectFiretruck(int _x, int _y)
 :Object(OBJECTTYPE::FIRETRUCK, DrawableObject::TEXTURE::FIRETRUCK, _x, _y)
 ,free(true)
-,path(nullptr){}
+,path(nullptr)
+,numberOfSandbags(5){}
 
 void ObjectFiretruck::update(Map *map) {
     if(path != nullptr){
@@ -143,4 +144,12 @@ bool ObjectFiretruck::newPathTo(Map *map, int x, int y){
     delete dist;
 
     return true;
+}
+
+int ObjectFiretruck::getNumberOfSandbags() {
+    return numberOfSandbags;
+}
+
+void ObjectFiretruck::setNumberOfSandbags(int i) {
+    numberOfSandbags = i;
 }

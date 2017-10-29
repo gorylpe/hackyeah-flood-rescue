@@ -11,8 +11,8 @@
 
 UIStateFirestationDetails::UIStateFirestationDetails(ObjectFirestation* _objectFirestation)
 :objectFirestation(_objectFirestation){
-    buttonTruck = new UIButton(0, 0, 40, 40, "Truck");
-    buttonHeli = new UIButton(0, 0, 40, 40, "Choppa");
+    buttonTruck = new UITextLabel(0, 0, 40, 40, "Truck");
+    buttonHeli = new UITextLabel(0, 0, 40, 40, "Choppa");
 }
 
 void UIStateFirestationDetails::draw(sf::RenderWindow *window) {

@@ -4,14 +4,14 @@
 
 #ifndef GRA_UIMANAGER_H
 #define GRA_UIMANAGER_H
+
+#include <SFML/Graphics/Font.hpp>
 #include "Object.h"
 #include "UIElement.h"
-#include "UILabel.h"
 #include "UIState.h"
 
 class UIManager {
     sf::Font *font;
-    UILabel *tooltip;
     UIManager();
     UIManager(const UIManager&);
 

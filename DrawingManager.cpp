@@ -4,6 +4,8 @@
 
 #include <SFML/Graphics/Sprite.hpp>
 #include <iostream>
+#include <SFML/Graphics/CircleShape.hpp>
+#include <SFML/Graphics/Text.hpp>
 #include "DrawingManager.h"
 #include "UIManager.h"
 #include "ObjectFiretruck.h"
