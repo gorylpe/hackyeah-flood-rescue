@@ -83,6 +83,9 @@ void GameManager::handleEvents() {
                     case sf::Keyboard::LAlt:
                         drawingManager->setShowHeightLevels(true);
                         break;
+                    case sf::Keyboard::F:
+                        map->setWaterLevel(7);
+                        break;
                     default:
                         break;
                 }

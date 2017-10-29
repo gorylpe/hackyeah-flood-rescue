@@ -115,6 +115,7 @@ void DrawingManager::draw(Map *map, std::vector<ObjectFirestation*>* firestation
     sf::Sprite sprite;
     for(int k = 0; k < firestationsArray->size(); ++k){
         ObjectFirestation* firestation = firestationsArray->at(k);
+        if (!firestation->getActive()) continue;
         int x = firestation->getX() - vx;
         int y = firestation->getY() - vy;
         sprite.setTexture(*textureMap->at(firestation->getTexture()));
@@ -124,6 +125,7 @@ void DrawingManager::draw(Map *map, std::vector<ObjectFirestation*>* firestation
 
         std::vector<ObjectFiretruck*>* objectsFiretrucks = firestation->getFiretrucks();
         for(ObjectFiretruck* firetruck : *objectsFiretrucks){
+            if (!firetruck->getActive()) continue;
             std::vector<sf::Vector2i>* path = firetruck->getPath();
             if(path != nullptr) {
                 for (sf::Vector2i v : *path) {
