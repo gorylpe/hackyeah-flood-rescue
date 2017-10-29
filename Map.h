@@ -14,7 +14,7 @@ public:
     int getWidth();
     int getHeight();
     void update();
-    void changingToWater(Tile*, Tile*);
+    bool changingToWater(Tile*, Tile*);
     void setWaterLevel(int level);
 private:
     int width, height;

@@ -4,6 +4,8 @@
 
 #include <cstring>
 #include "Map.h"
+#include "ObjectManager.h"
+
 Map::Map(int _width, int _height):
         width(_width),
         height(_height) {
@@ -49,25 +51,45 @@ void Map::update() {
                 if(i > 0){
                     Tile* notWater = getTile(i-1, j);
                     if(!notWater->getSandbagsRight() && !water->getSandbagsLeft()) {
-                        changingToWater(water, notWater);
+                        if (changingToWater(water, notWater)) {
+                            auto object = ObjectManager::getSingleton().getObjectAt(i-1, j);
+                            if (object != nullptr) {
+                                object->kill();
+                            }
+                        }
                     }
                 }
                 if(j > 0){
                     Tile* notWater = getTile(i, j-1);
                     if(!notWater->getSandbagsDown() && !water->getSandbagsUp()) {
-                        changingToWater(water, notWater);
+                        if (changingToWater(water, notWater)) {
+                            auto object = ObjectManager::getSingleton().getObjectAt(i, j-1);
+                            if (object != nullptr) {
+                                object->kill();
+                            }
+                        }
                     }
                 }
                 if(i < width-1){
                     Tile* notWater = getTile(i+1, j);
                     if(!notWater->getSandbagsLeft() && !water->getSandbagsRight()) {
-                        changingToWater(water, notWater);
+                        if (changingToWater(water, notWater)) {
+                            auto object = ObjectManager::getSingleton().getObjectAt(i+1, j);
+                            if (object != nullptr) {
+                                object->kill();
+                            }
+                        }
                     }
                 }
                 if(j < height-1){
                     Tile* notWater = getTile(i, j+1);
                     if(!notWater->getSandbagsUp() && !water->getSandbagsDown()) {
-                        changingToWater(water, notWater);
+                        if (changingToWater(water, notWater)) {
+                            auto object = ObjectManager::getSingleton().getObjectAt(i, j+1);
+                            if (object != nullptr) {
+                                object->kill();
+                            }
+                        }
                     }
                 }
             }
@@ -82,13 +104,16 @@ void Map::update() {
     delete copy;
 }
 
-void Map::changingToWater(Tile* water, Tile* notWater) {
+bool Map::changingToWater(Tile* water, Tile* notWater) {
+    bool changed = false;
     if (notWater->getTexture() != DrawableObject::TEXTURE::WATER) {
         if (notWater->getHeight() < water->getHeight()) {
             notWater->setTexture(DrawableObject::TEXTURE::WATER);
+            changed = true;
         }
     }
     notWater->setHeight(water->getHeight());
+    return changed;
 }
 
 Map::~Map() {

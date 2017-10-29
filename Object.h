@@ -20,6 +20,7 @@ protected:
     std::string name;
     int x, y;
     OBJECTTYPE objectType;
+    bool active = true;
 public:
     Object(OBJECTTYPE _objectType, DrawableObject::TEXTURE _texture, int _x, int _y)
     :objectType(_objectType)
@@ -36,6 +37,7 @@ public:
     void setY(int y) { this->y = y; }
     void setObjectType(OBJECTTYPE _objectType){objectType = _objectType;}
     OBJECTTYPE getObjectType(){return objectType;}
+    void kill() { active = false; }
 
 };
 
