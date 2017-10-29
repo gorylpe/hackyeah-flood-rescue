@@ -22,8 +22,16 @@ The project was inspired by the [Great Flood of 1997](https://en.wikipedia.org/w
 
 ## Controls
   Space: Pause
+  
   D: Shows coordinates on the map
+  
   ALT: Shows level of tiles
+  
+  Arrow keys: Moves vieport
+  
+  Mouse wheel: Zoom
+  
+  Mouse: Everything else
 
 ## Technologies
 C++ & [SFML](https://www.sfml-dev.org/)
