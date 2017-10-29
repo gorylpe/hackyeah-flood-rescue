@@ -28,8 +28,11 @@ GameManager::~GameManager() {
 }
 
 void GameManager::mainLoop() {
+    sf::Clock floodClock;
+    floodTime = sf::seconds(40);
     sf::Clock frameClock;
     while(isGameRunning){
+        floodClock.restart();
         frameClock.restart();
         switch(gameState){
             case GAMESTATE::GAME:
@@ -38,7 +41,16 @@ void GameManager::mainLoop() {
                 sf::sleep(frameTime - loopTime);
                 break;
         }
+        if(!paused){
+            if(floodTime <= sf::seconds(0)){
+                floodTime = sf::seconds(0);
+                map->setWaterLevel(7);
+            } else {
+                floodTime -= floodClock.getElapsedTime();
+            }
+        }
     }
+
 }
 
 void GameManager::setFrameTime(int time) {
@@ -49,9 +61,6 @@ void GameManager::gameLoop() {
     handleEvents();
     if (!paused && iterationClock->getElapsedTime() > tickTime) {
         doObjectsIteration();
-        if (floodCountdown > 0 && (--floodCountdown) == 0) {
-            map->setWaterLevel(7);
-        }
         iterationClock->restart();
     }
     UIManager::getSingleton().update();

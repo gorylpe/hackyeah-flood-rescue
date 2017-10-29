@@ -48,6 +48,8 @@ public:
     bool isPaused() { return paused; }
     int getFloodCountdown() { return floodCountdown; }
     sf::Time getTickTime() { return tickTime; }
+
+    sf::Time floodTime;
 };
 
 
