@@ -115,7 +115,9 @@ void UIStateHelicopterDetails::handleClick(int x, int y) {
             objectHelicopter->setNumberOfSandbags(objectHelicopter->getNumberOfSandbags() + 1);
         }
     } else if(buttonReturnToBase->getRect().contains(x, y)) {
-        //TODO
+        bool pathExits = objectHelicopter->newPathToBase(GameManager::getSingleton().getMap(), objectHelicopter->getBase()->getX(), objectHelicopter->getBase()->getY());
+        if(pathExits)
+            UIManager::getSingleton().changeState(new UIStateDefault());
     } else if(buttonMove->getRect().contains(x, y)) {
         UIManager::getSingleton().changeState(new UIStateSendHelicopter(objectHelicopter));
     } else {

@@ -9,6 +9,8 @@
 #include <vector>
 #include "Object.h"
 
+class ObjectFirestation;
+
 class ObjectFiretruck : public Object {
     std::vector<sf::Vector2i>* path;
     int currentPositionInPath;
@@ -16,11 +18,15 @@ class ObjectFiretruck : public Object {
     bool free;
 
     int numberOfSandbags;
+
+    ObjectFirestation* base;
+    bool goToBase = false;
 public:
-    ObjectFiretruck(int _x, int _y);
+    ObjectFiretruck(int _x, int _y, ObjectFirestation* _base);
     void update(Map* map) override;
 
     bool newPathTo(Map *map, int x, int y);
+    bool newPathToBase(Map *map, int x, int y);
 
     std::vector<sf::Vector2i>* getPath(){return path;}
 
@@ -30,6 +36,8 @@ public:
     int getNumberOfSandbags();
 
     void setNumberOfSandbags(int i);
+
+    ObjectFirestation* getBase();
 };
 
 

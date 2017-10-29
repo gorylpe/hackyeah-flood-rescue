@@ -9,10 +9,10 @@ ObjectFirestation::ObjectFirestation(int numberOfFiretrucks, int numberOfHelicop
     trucks = new std::vector<ObjectFiretruck*>();
     helis = new std::vector<ObjectHelicopter*>();
     for(int i = 0; i < numberOfFiretrucks; ++i){
-        trucks->push_back(new ObjectFiretruck(_x, _y));
+        trucks->push_back(new ObjectFiretruck(_x, _y, this));
     }
     for(int i = 0; i < numberOfHelicopters; ++i){
-        helis->push_back(new ObjectHelicopter(_x, _y));
+        helis->push_back(new ObjectHelicopter(_x, _y, this));
     }
 }
 
