@@ -164,10 +164,10 @@ void DrawingManager::draw(Map *map, std::vector<ObjectFirestation*>* firestation
             if (showHeightLevels) {
                 sf::Text height;
                 height.setFont(*font);
-                height.setCharacterSize(24);
+                height.setCharacterSize(24 * tileWidth / 40);
                 height.setFillColor(sf::Color::Black);
                 height.setOutlineColor(sf::Color::White);
-                height.setOutlineThickness(2.0);
+                height.setOutlineThickness(2.0 * tileWidth / 40);
                 height.setString(std::to_string(tile->getHeight()));
                 height.setPosition((x + 0.25) * tileWidth, (y + 0.25) * tileHeight);
                 window->draw(height);
