@@ -7,6 +7,7 @@
 #include "ObjectManager.h"
 #include "MapLoader.h"
 #include "UIManager.h"
+#include "ObjectFiretruck.h"
 
 GameManager &GameManager::getSingleton() {
     static GameManager singleton;
@@ -17,6 +18,8 @@ GameManager::GameManager() {
     isGameRunning = true;
     gameState = GAME;
     map = MapLoader::loadMap("map1.txt");
+    ObjectFiretruck* objectFiretruck = (ObjectFiretruck*)(ObjectManager::getSingleton().getObjectAt(4, 2));
+    objectFiretruck->newPathTo(map, 6, 9);
 }
 
 GameManager::~GameManager() {
@@ -102,6 +105,12 @@ void GameManager::handleEvents() {
                         break;
                 }
                 break;
+            case sf::Event::MouseWheelMoved:
+                if (e.mouseWheel.delta > 0) {
+                    drawingManager->setZoomLevel(1);
+                } else if (e.mouseWheel.delta < 0) {
+                    drawingManager->setZoomLevel(0);
+                }
         }
     }
 }

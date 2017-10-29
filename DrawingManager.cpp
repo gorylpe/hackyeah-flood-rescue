@@ -6,6 +6,8 @@
 #include <iostream>
 #include "DrawingManager.h"
 #include "UIManager.h"
+#include "ObjectFiretruck.h"
+#include "ObjectManager.h"
 
 DrawingManager::DrawingManager() {
     window = new sf::RenderWindow(sf::VideoMode(windowWidth, windowHeight), "Game");
@@ -119,6 +121,19 @@ void DrawingManager::draw(Map *map, std::vector<Object *>* objectsArray) {
         sprite.setScale(1.0 * tileWidth / sprite.getLocalBounds().width, 1.0 * tileHeight / sprite.getLocalBounds().height);
         sprite.setPosition(x * tileWidth, y * tileHeight);
         window->draw(sprite);
+
+        ObjectFiretruck* objectFiretruck = dynamic_cast<ObjectFiretruck*>(object);
+        if(objectFiretruck != nullptr){
+            std::vector<sf::Vector2i>* path = objectFiretruck->getPath();
+            for(sf::Vector2i v : *path){
+                int pathX = v.x - vx;
+                int pathY = v.y - vy;
+                sf::CircleShape shape(3);
+                shape.setFillColor(sf::Color::Yellow);
+                shape.setPosition((pathX + 0.5) * tileWidth - 3, (pathY + 0.5) * tileHeight - 3);
+                window->draw(shape);
+            }
+        }
     }
 
     for(int i = vx; i <= vx + vw; ++i) {
@@ -182,6 +197,21 @@ int DrawingManager::getViewportTileX(int mouseX) {
 
 int DrawingManager::getViewportTileY(int mouseY) {
     return (mouseY / tileHeight) - vy;
+}
+
+void DrawingManager::setZoomLevel(int i) {
+    switch(i){
+        case 0:
+            tileHeight = 20;
+            tileWidth = 20;
+            break;
+        case 1:
+            tileHeight = 40;
+            tileWidth = 40;
+            break;
+    }
+    vw = windowWidth / tileWidth;
+    vh = windowHeight / tileHeight;
 }
 
 

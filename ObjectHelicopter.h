@@ -11,6 +11,8 @@
 class ObjectHelicopter : public Object {
 public:
     ObjectHelicopter(int _x, int _y);
+
+    virtual void update(Map* map){};
 };
 
 

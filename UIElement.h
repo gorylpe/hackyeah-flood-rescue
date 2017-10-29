@@ -28,6 +28,8 @@ public:
     void setY(int y) { this->y = y; }
     int getWidth(){return width;}
     int getHeight(){return height;}
+    sf::IntRect getRect() { return sf::IntRect(x, y, width, height); }
+    virtual void onClick() {};
 
     virtual void draw(sf::RenderWindow *window) = 0;
     void setVisible(bool visible);
