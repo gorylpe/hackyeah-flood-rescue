@@ -230,6 +230,11 @@ void DrawingManager::draw(Map *map, std::vector<ObjectFirestation*>* firestation
     }
     pauseState.setString(message);
     window->draw(pauseState);
+
+    int countdown = GameManager::getSingleton().getFloodCountdown();
+    if (countdown > 0) {
+
+    }
     window->display();
 }
 

@@ -21,6 +21,7 @@ GameManager::GameManager() {
     tickTime = sf::seconds(0.75);
     paused = true;
     iterationClock = new sf::Clock;
+    floodCountdown = 30;
 }
 
 GameManager::~GameManager() {
@@ -47,7 +48,10 @@ void GameManager::setFrameTime(int time) {
 void GameManager::gameLoop() {
     handleEvents();
     if (!paused && iterationClock->getElapsedTime() > tickTime) {
-       doObjectsIteration();
+        doObjectsIteration();
+        if (floodCountdown > 0 && (--floodCountdown) == 0) {
+            map->setWaterLevel(7);
+        }
         iterationClock->restart();
     }
     UIManager::getSingleton().update();
@@ -91,7 +95,7 @@ void GameManager::handleEvents() {
                         drawingManager->setShowHeightLevels(true);
                         break;
                     case sf::Keyboard::F:
-                        map->setWaterLevel(7);
+                        //map->setWaterLevel(7);
                         break;
                     default:
                         break;
