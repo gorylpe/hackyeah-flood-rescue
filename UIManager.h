@@ -9,6 +9,7 @@
 #include "Object.h"
 #include "UIElement.h"
 #include "UIState.h"
+#include "UITextLabel.h"
 
 class UIManager {
     sf::Font *font;
@@ -18,6 +19,7 @@ class UIManager {
     UIState* currentState;
     UIState* nextState;
 
+    UITextLabel *lossText;
 public:
     static UIManager& getSingleton();
 

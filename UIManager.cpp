@@ -5,6 +5,8 @@
 #include "UIManager.h"
 #include "ObjectManager.h"
 #include "UIStateDefault.h"
+#include "UITextLabel.h"
+#include "GameManager.h"
 #include <iostream>
 
 UIManager::UIManager() {
@@ -12,6 +14,8 @@ UIManager::UIManager() {
     font->loadFromFile("Roboto-Regular.ttf");
 
     currentState = new UIStateDefault();
+
+    lossText = new UITextLabel(10, 10, 100, 50, "Loss: " + std::to_string(GameManager::getSingleton().getLoss()) + "$");
 }
 
 UIManager &UIManager::getSingleton() {
