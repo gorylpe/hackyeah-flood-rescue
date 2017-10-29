@@ -5,7 +5,8 @@
 #include "ObjectFirestation.h"
 
 ObjectFirestation::ObjectFirestation(int numberOfFiretrucks, int numberOfHelicopters, int _x, int _y)
-:Object(OBJECTTYPE::FIRESTATION, DrawableObject::TEXTURE::FIRESTATION, _x, _y){
+:Object(OBJECTTYPE::FIRESTATION, DrawableObject::TEXTURE::FIRESTATION, _x, _y),
+worth(50){
     trucks = new std::vector<ObjectFiretruck*>();
     helis = new std::vector<ObjectHelicopter*>();
     for(int i = 0; i < numberOfFiretrucks; ++i){

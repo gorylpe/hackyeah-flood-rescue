@@ -5,6 +5,7 @@
 #include <cstring>
 #include "Map.h"
 #include "ObjectManager.h"
+#include "GameManager.h"
 
 Map::Map(int _width, int _height):
         width(_width),
@@ -110,6 +111,9 @@ bool Map::changingToWater(Tile* water, Tile* notWater) {
         if (notWater->getHeight() < water->getHeight()) {
             notWater->setTexture(DrawableObject::TEXTURE::WATER);
             changed = true;
+            if (notWater->getTexture() != DrawableObject::TEXTURE::BUILDING) {
+                GameManager::getSingleton().addLoss(10);
+            }
         }
     }
     notWater->setHeight(water->getHeight());

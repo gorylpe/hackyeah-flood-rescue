@@ -9,7 +9,8 @@
 ObjectFiretruck::ObjectFiretruck(int _x, int _y)
 :Object(OBJECTTYPE::FIRETRUCK, DrawableObject::TEXTURE::FIRETRUCK, _x, _y)
 ,free(true)
-,path(nullptr){}
+,path(nullptr),
+worth(20){}
 
 void ObjectFiretruck::update(Map *map) {
     if(path != nullptr){

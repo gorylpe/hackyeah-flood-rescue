@@ -20,6 +20,7 @@ class GameManager {
     GAMESTATE gameState;
     bool isGameRunning;
     Map *map;
+    int loss;
 
     GameManager();
     GameManager(const GameManager &);
@@ -37,6 +38,9 @@ public:
     void doObjectsIteration();
 
     Map* getMap(){return map;};
+
+    void addLoss(int n);
+    int getLoss() { return loss; }
 };
 
 

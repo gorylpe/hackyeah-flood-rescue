@@ -132,3 +132,8 @@ void GameManager::doObjectsIteration(){
         fs->update(map);
     }
 }
+
+void GameManager::addLoss(int n) {
+    loss += n;
+    std::cout << "Loss: " << loss << std::endl;
+}
