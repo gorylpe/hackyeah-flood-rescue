@@ -18,6 +18,11 @@ characteristics with the real world problem:
 - trying to protect our resources is only a form of damage control and ends up as a net loss,
 - even no mistakes on our part can lead to catastrophic results.
 
+## Controls
+  Space: Pause
+  D: Shows coordinates on the map
+  ALT: Shows level of tiles
+
 ## Technologies
 C++ & [SFML](https://www.sfml-dev.org/)
 
