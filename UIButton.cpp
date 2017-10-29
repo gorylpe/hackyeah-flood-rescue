@@ -9,7 +9,9 @@
 
 UIButton::UIButton(int _x, int _y, int _width, int _height, std::string _text)
 :UIElement(_x, _y, _width, _height),
-text(_text){}
+text(_text),
+ fontSize(20)
+{}
 
 void UIButton::draw(sf::RenderWindow *window) {
     sf::RectangleShape rect;
@@ -18,6 +20,7 @@ void UIButton::draw(sf::RenderWindow *window) {
     rect.setSize(sf::Vector2f(getWidth(), getHeight()));
     sf::Text text;
     text.setFont(*DrawingManager::getSingleton().getFont());
+    text.setCharacterSize(fontSize);
     text.setFillColor(sf::Color::Black);
     text.setString(this->text);
     text.setPosition(getX(), getY());
