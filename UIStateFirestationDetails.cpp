@@ -7,6 +7,7 @@
 #include "UIManager.h"
 #include "UIStateSendFiretruck.h"
 #include "DrawingManager.h"
+#include "UIStateDefault.h"
 
 UIStateFirestationDetails::UIStateFirestationDetails(ObjectFirestation* _objectFirestation)
 :objectFirestation(_objectFirestation){
@@ -29,17 +30,25 @@ void UIStateFirestationDetails::draw(sf::RenderWindow *window) {
 
     buttonTruck->setX(x+5);
     buttonTruck->setY(y+5);
+    buttonTruck->setWidth(DrawingManager::getSingleton().getTileWidth());
+    buttonTruck->setWidth(DrawingManager::getSingleton().getTileHeight());
+    buttonTruck->setFontSize(DrawingManager::getSingleton().getTileWidth() / 2.5);
     buttonTruck->draw(window);
     buttonHeli->setX(x+55);
     buttonHeli->setY(y+5);
+    buttonTruck->setWidth(DrawingManager::getSingleton().getTileWidth());
+    buttonTruck->setWidth(DrawingManager::getSingleton().getTileHeight());
+    buttonTruck->setFontSize(DrawingManager::getSingleton().getTileWidth() / 2.5);
     buttonHeli->draw(window);
 }
 
 void UIStateFirestationDetails::handleClick(int x, int y) {
-    if(buttonTruck->getRect().contains(x, y)){
-        if(objectFirestation->getFreeFiretrucks() > 0){
-            ObjectFiretruck* truck = objectFirestation->getFreeTruck();
-            UIManager::getSingleton().changeState(new UIStateSendFiretruck(truck));
-        }
+    if(buttonTruck->getRect().contains(x, y) && objectFirestation->getFreeFiretrucks() > 0){
+        ObjectFiretruck* truck = objectFirestation->getFreeTruck();
+        UIManager::getSingleton().changeState(new UIStateSendFiretruck(truck));
+    } else if(buttonHeli->getRect().contains(x, y) && objectFirestation->getFreeHelicopters() > 0){
+
+    } else{
+        UIManager::getSingleton().changeState(new UIStateDefault());
     }
 }

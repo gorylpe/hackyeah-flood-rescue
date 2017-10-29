@@ -2,6 +2,7 @@
 // Created by Piotr on 29.10.2017.
 //
 
+#include <iostream>
 #include "UIStateDefault.h"
 #include "UIManager.h"
 #include "DrawingManager.h"
@@ -33,7 +34,8 @@ void UIStateDefault::handleClick(int x, int y) {
         auto *drawingManager = &DrawingManager::getSingleton();
         int _x = drawingManager->getViewportTileX(x);
         int _y = drawingManager->getViewportTileY(y);
-        ObjectFirestation *object = ObjectManager::getSingleton().getObjectAt(_x, _y);
+        Object *object = ObjectManager::getSingleton().getObjectAt(_x, _y);
+        std::cout << "Clicked on " << _x << " - " << _y << std::endl;
         if (object != nullptr) {
             ObjectFirestation* objectFirestation = dynamic_cast<ObjectFirestation*>(object);
             ObjectFiretruck* objectFiretruck = dynamic_cast<ObjectFiretruck*>(object);
@@ -53,5 +55,6 @@ void UIStateDefault::handleClick(int x, int y) {
 }
 
 UIStateDefault::UIStateDefault() {
+    std::cout << "Switched to Default state" << std::endl;
     elements = new std::vector<UIElement*>();
 }
