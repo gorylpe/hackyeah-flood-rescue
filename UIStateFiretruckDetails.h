@@ -29,8 +29,6 @@ public:
 
     void handleClick(int x, int y) override;
 
-    void drawButton(UITextLabel *button, int plusx, int plusy);
-
     void drawButton(sf::RenderWindow *window, UITextLabel *button, int plusx, int plusy);
 
 };

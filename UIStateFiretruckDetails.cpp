@@ -3,6 +3,7 @@
 //
 
 #include <SFML/Graphics/RectangleShape.hpp>
+#include <iostream>
 #include "UIStateFiretruckDetails.h"
 #include "DrawingManager.h"
 #include "GameManager.h"
@@ -113,7 +114,9 @@ void UIStateFiretruckDetails::handleClick(int x, int y) {
             objectFiretruck->setNumberOfSandbags(objectFiretruck->getNumberOfSandbags() + 1);
         }
     } else if(buttonReturnToBase->getRect().contains(x, y)) {
-        //TODO
+        bool pathExits = objectFiretruck->newPathToBase(GameManager::getSingleton().getMap(), objectFiretruck->getBase()->getX(), objectFiretruck->getBase()->getY());
+        if(pathExits)
+            UIManager::getSingleton().changeState(new UIStateDefault());
     } else if(buttonMove->getRect().contains(x, y)) {
         UIManager::getSingleton().changeState(new UIStateSendFiretruck(objectFiretruck));
     } else {
