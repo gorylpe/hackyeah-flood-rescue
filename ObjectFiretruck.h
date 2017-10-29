@@ -20,6 +20,7 @@ class ObjectFiretruck : public Object {
     int numberOfSandbags;
 
     ObjectFirestation* base;
+    bool goToBase = false;
 public:
     ObjectFiretruck(int _x, int _y, ObjectFirestation* _base);
     void update(Map* map) override;

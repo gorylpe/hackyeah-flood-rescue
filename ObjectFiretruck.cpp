@@ -23,11 +23,16 @@ void ObjectFiretruck::update(Map *map) {
         if(currentPositionInPath == path->size()){
             delete path;
             path = nullptr;
+            if(goToBase){
+                setFree(true);
+                setNumberOfSandbags(5);
+            }
         }
     }
 }
 
 bool ObjectFiretruck::newPathTo(Map *map, int x, int y){
+    goToBase = false;
     if(path != nullptr){
         delete path;
         path = nullptr;
@@ -153,6 +158,7 @@ bool ObjectFiretruck::newPathTo(Map *map, int x, int y){
 
 
 bool ObjectFiretruck::newPathToBase(Map *map, int x, int y){
+    goToBase = true;
     if(path != nullptr){
         delete path;
         path = nullptr;
@@ -178,7 +184,7 @@ bool ObjectFiretruck::newPathToBase(Map *map, int x, int y){
         u = q.front();
         q.pop();
 
-        std::cout << u.x << " " << u.y << " " << dist[x][y] << std::endl;
+        std::cout << u.x << " " << u.y << " " << dist[u.x][u.y] << std::endl;
 
         if(u.x == x && u.y == y)
             break;
@@ -211,7 +217,7 @@ bool ObjectFiretruck::newPathToBase(Map *map, int x, int y){
         v3.x = u.x;
         v3.y = u.y - 1;
         if(v3.x == x && v3.y == y){
-            dist[v1.x][v1.y] = dist[u.x][u.y] + 1;
+            dist[v3.x][v3.y] = dist[u.x][u.y] + 1;
             break;
         }
         if(v3.y >= 0 && dist[v3.x][v3.y] == -1 &&
@@ -223,7 +229,7 @@ bool ObjectFiretruck::newPathToBase(Map *map, int x, int y){
         v4.x = u.x;
         v4.y = u.y + 1;
         if(v4.x == x && v4.y == y){
-            dist[v1.x][v1.y] = dist[u.x][u.y] + 1;
+            dist[v4.x][v4.y] = dist[u.x][u.y] + 1;
             break;
         }
         if(v4.y < map->getHeight() && dist[v4.x][v4.y] == -1 &&
