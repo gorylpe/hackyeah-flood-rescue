@@ -201,7 +201,7 @@ int DrawingManager::getViewportTileY(int mouseY) {
     return (mouseY / tileHeight) + vy;
 }
 
-void DrawingManager::setZoomLevel(int i) {
+void DrawingManager::setZoomLevel(Map* map, int i) {
     switch(i){
         case 0:
             tileHeight = 20;
@@ -214,6 +214,11 @@ void DrawingManager::setZoomLevel(int i) {
     }
     vw = windowWidth / tileWidth;
     vh = windowHeight / tileHeight;
+
+    if(vx + vw >= map->getWidth()) vx = map->getWidth() - vw - 1;
+    if(vy + vh >= map->getHeight()) vy = map->getHeight() - vh - 1;
+    if(vx < 0) vx = 0;
+    if(vy < 0) vy = 0;
 }
 
 
