@@ -13,11 +13,15 @@ ObjectFiretruck::ObjectFiretruck(int _x, int _y)
 
 void ObjectFiretruck::update(Map *map) {
     if(path != nullptr){
-        ++currentPositionInPath;
         int x = path->at(currentPositionInPath).x;
         int y = path->at(currentPositionInPath).y;
         setX(x);
         setY(y);
+        ++currentPositionInPath;
+        if(currentPositionInPath == path->size()){
+            delete path;
+            path = nullptr;
+        }
     }
 }
 
