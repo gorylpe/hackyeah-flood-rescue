@@ -5,6 +5,8 @@
 #include <fstream>
 #include "ObjectLoader.h"
 #include "ObjectFirestation.h"
+#include "ObjectFiretruck.h"
+#include "ObjectHelicopter.h"
 
 std::vector<Object*>* ObjectLoader::loadObjects(std::string filename) {
     std::ifstream file;
@@ -22,6 +24,12 @@ std::vector<Object*>* ObjectLoader::loadObjects(std::string filename) {
         switch(objecttype){
             case Object::OBJECTTYPE::FIRESTATION:
                 object = new ObjectFirestation(x, y);
+                break;
+            case Object::OBJECTTYPE::FIRETRUCK:
+                object = new ObjectFiretruck(x, y);
+                break;
+            case Object::OBJECTTYPE::HELICOPTER:
+                object = new ObjectHelicopter(x, y);
                 break;
         }
         objects->push_back(object);

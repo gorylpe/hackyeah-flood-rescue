@@ -4,6 +4,7 @@
 
 #include "ObjectManager.h"
 #include "ObjectLoader.h"
+#include "ObjectFiretruck.h"
 
 ObjectManager::ObjectManager() {
     objects = ObjectLoader::loadObjects("objects1.txt");
