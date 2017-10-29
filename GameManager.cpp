@@ -126,4 +126,9 @@ void GameManager::resetMap(){
 
 void GameManager::doObjectsIteration(){
     map->update();
+
+    std::vector<ObjectFirestation*>* firestations = ObjectManager::getSingleton().getFirestations();
+    for(ObjectFirestation* fs : *firestations){
+        fs->update(map);
+    }
 }

@@ -17,7 +17,11 @@ ObjectFirestation::ObjectFirestation(int numberOfFiretrucks, int numberOfHelicop
 }
 
 void ObjectFirestation::update(Map *map) {
-
+    for(ObjectFiretruck* objectFiretruck : *trucks){
+        if(objectFiretruck->getPath() != nullptr){
+            objectFiretruck->update(map);
+        }
+    }
 }
 
 int ObjectFirestation::getFreeFiretrucks() {

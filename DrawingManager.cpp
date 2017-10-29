@@ -123,8 +123,8 @@ void DrawingManager::draw(Map *map, std::vector<ObjectFirestation*>* firestation
         window->draw(sprite);
 
         std::vector<ObjectFiretruck*>* objectsFiretrucks = firestation->getFiretrucks();
-        for(ObjectFiretruck* objectFiretruck : *objectsFiretrucks){
-            std::vector<sf::Vector2i>* path = objectFiretruck->getPath();
+        for(ObjectFiretruck* firetruck : *objectsFiretrucks){
+            std::vector<sf::Vector2i>* path = firetruck->getPath();
             if(path != nullptr) {
                 for (sf::Vector2i v : *path) {
                     int pathX = v.x - vx;
@@ -134,6 +134,14 @@ void DrawingManager::draw(Map *map, std::vector<ObjectFirestation*>* firestation
                     shape.setPosition((pathX + 0.5) * tileWidth - 3, (pathY + 0.5) * tileHeight - 3);
                     window->draw(shape);
                 }
+            }
+            int fx = firetruck->getX() - vx;
+            int fy = firetruck->getY() - vy;
+            if(fx != x || fy != y){
+                sprite.setTexture(*textureMap->at(firetruck->getTexture()));
+                sprite.setScale(1.0 * tileWidth / sprite.getLocalBounds().width, 1.0 * tileHeight / sprite.getLocalBounds().height);
+                sprite.setPosition(fx * tileWidth, fy * tileHeight);
+                window->draw(sprite);
             }
         }
     }
@@ -156,10 +164,10 @@ void DrawingManager::draw(Map *map, std::vector<ObjectFirestation*>* firestation
             if (showHeightLevels) {
                 sf::Text height;
                 height.setFont(*font);
-                height.setCharacterSize(24);
+                height.setCharacterSize(24 * tileWidth / 40);
                 height.setFillColor(sf::Color::Black);
                 height.setOutlineColor(sf::Color::White);
-                height.setOutlineThickness(2.0);
+                height.setOutlineThickness(2.0 * tileWidth / 40);
                 height.setString(std::to_string(tile->getHeight()));
                 height.setPosition((x + 0.25) * tileWidth, (y + 0.25) * tileHeight);
                 window->draw(height);
