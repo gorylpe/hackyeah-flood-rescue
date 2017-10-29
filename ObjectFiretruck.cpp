@@ -26,6 +26,8 @@ void ObjectFiretruck::update(Map *map) {
 }
 
 bool ObjectFiretruck::newPathTo(Map *map, int x, int y){
+    currentPositionInPath = 0;
+
     int** dist = new int*[map->getWidth()];
     for (int i = 0; i < map->getWidth(); i++) {
         dist[i] = new int[map->getHeight()];
