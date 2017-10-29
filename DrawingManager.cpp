@@ -199,4 +199,19 @@ int DrawingManager::getViewportTileY(int mouseY) {
     return (mouseY / tileHeight) - vy;
 }
 
+void DrawingManager::setZoomLevel(int i) {
+    switch(i){
+        case 0:
+            tileHeight = 20;
+            tileWidth = 20;
+            break;
+        case 1:
+            tileHeight = 40;
+            tileWidth = 40;
+            break;
+    }
+    vw = windowWidth / tileWidth;
+    vh = windowHeight / tileHeight;
+}
+
 

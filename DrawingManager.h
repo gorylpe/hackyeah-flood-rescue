@@ -65,6 +65,8 @@ public:
     void switchDebug(){debugMode = !debugMode;};
 
     void setShowHeightLevels(bool _set){showHeightLevels = _set;};
+
+    void setZoomLevel(int i);
 };
 
 
