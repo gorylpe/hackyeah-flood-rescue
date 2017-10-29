@@ -18,6 +18,9 @@ GameManager::GameManager() {
     isGameRunning = true;
     gameState = GAME;
     map = MapLoader::loadMap("map1.txt");
+    tickTime = sf::seconds(0.75);
+    paused = false;
+    iterationClock = new sf::Clock;
 }
 
 GameManager::~GameManager() {
@@ -43,6 +46,10 @@ void GameManager::setFrameTime(int time) {
 
 void GameManager::gameLoop() {
     handleEvents();
+    if (!paused && iterationClock->getElapsedTime() > tickTime) {
+       doObjectsIteration();
+        iterationClock->restart();
+    }
     UIManager::getSingleton().update();
     DrawingManager::getSingleton().draw(map, ObjectManager::getSingleton().getFirestations());
 }
@@ -60,7 +67,7 @@ void GameManager::handleEvents() {
             case sf::Event::KeyPressed:
                 switch (e.key.code) {
                     case sf::Keyboard::Space:
-                        doObjectsIteration();
+                        paused = !paused;
                         break;
                     case sf::Keyboard::Left:
                         drawingManager->moveViewport(map, DrawingManager::LEFT);

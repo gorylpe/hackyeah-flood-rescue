@@ -13,6 +13,9 @@
 class GameManager {
     // milliseconds
     sf::Time frameTime;
+    sf::Time tickTime;
+    sf::Clock *iterationClock;
+    bool paused;
     enum GAMESTATE{
             GAME,
             MENU
