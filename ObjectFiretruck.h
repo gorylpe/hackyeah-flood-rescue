@@ -18,7 +18,6 @@ class ObjectFiretruck : public Object {
     int numberOfSandbags;
 public:
     ObjectFiretruck(int _x, int _y);
-    //TODO list of points to move
     void update(Map* map) override;
 
     bool newPathTo(Map *map, int x, int y);

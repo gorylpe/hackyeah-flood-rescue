@@ -30,6 +30,8 @@ public:
     void update();
 
     void changeState(UIState* newState){nextState = newState;};
+
+    void updateLoss(int loss);
 };
 
 

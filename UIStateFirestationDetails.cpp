@@ -8,6 +8,7 @@
 #include "UIStateSendFiretruck.h"
 #include "DrawingManager.h"
 #include "UIStateDefault.h"
+#include "UIStateSendHelicopter.h"
 
 UIStateFirestationDetails::UIStateFirestationDetails(ObjectFirestation* _objectFirestation)
 :objectFirestation(_objectFirestation){
@@ -49,7 +50,8 @@ void UIStateFirestationDetails::handleClick(int x, int y) {
         ObjectFiretruck* truck = objectFirestation->getFreeTruck();
         UIManager::getSingleton().changeState(new UIStateSendFiretruck(truck));
     } else if(buttonHeli->getRect().contains(x, y) && objectFirestation->getFreeHelicopters() > 0){
-
+        ObjectHelicopter* heli = objectFirestation->getFreeHelicopter();
+        UIManager::getSingleton().changeState(new UIStateSendHelicopter(heli));
     } else{
         UIManager::getSingleton().changeState(new UIStateDefault());
     }

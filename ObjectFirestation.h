@@ -22,6 +22,7 @@ public:
     int getFreeHelicopters();
 
     ObjectFiretruck *getFreeTruck();
+    ObjectHelicopter *getFreeHelicopter();
 
     std::vector<ObjectFiretruck*>* getFiretrucks(){ return trucks;};
     std::vector<ObjectHelicopter*>* getHelicopters() { return helis;};

@@ -135,5 +135,6 @@ void GameManager::doObjectsIteration(){
 
 void GameManager::addLoss(int n) {
     loss += n;
+    UIManager::getSingleton().updateLoss(loss);
     std::cout << "Loss: " << loss << std::endl;
 }

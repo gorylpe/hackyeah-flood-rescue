@@ -15,7 +15,7 @@ UIManager::UIManager() {
 
     currentState = new UIStateDefault();
 
-    lossText = new UITextLabel(10, 10, 100, 50, "Loss: " + std::to_string(GameManager::getSingleton().getLoss()) + "$");
+    lossText = new UITextLabel(10, 10, 200, 30, "Loss: 0$");
 }
 
 UIManager &UIManager::getSingleton() {
@@ -29,6 +29,7 @@ void UIManager::handleClick(int x, int y) {
 
 void UIManager::draw(sf::RenderWindow *window) {
     currentState->draw(window);
+    lossText->draw(window);
 }
 
 void UIManager::update() {
@@ -38,4 +39,10 @@ void UIManager::update() {
         nextState = nullptr;
     }
 }
+
+void UIManager::updateLoss(int loss) {
+    lossText->setText("Loss: " + std::to_string(loss) + "$");
+}
+
+
 

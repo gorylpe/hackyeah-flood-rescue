@@ -7,10 +7,8 @@
 #include "ObjectFiretruck.h"
 
 ObjectFiretruck::ObjectFiretruck(int _x, int _y)
-:Object(OBJECTTYPE::FIRETRUCK, DrawableObject::TEXTURE::FIRETRUCK, _x, _y)
+:Object(OBJECTTYPE::FIRETRUCK, DrawableObject::TEXTURE::FIRETRUCK, _x, _y, 10000)
 ,free(true)
-,path(nullptr)
-,worth(20)
 ,path(nullptr)
 ,numberOfSandbags(5){}
 

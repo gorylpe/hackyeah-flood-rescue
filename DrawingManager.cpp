@@ -61,6 +61,11 @@ void DrawingManager::loadSprites(){
     texture->loadFromFile("sprites/firetruck.png");
     texture->setSmooth(true);
     textureMap->push_back(texture);
+
+    texture = new sf::Texture();
+    texture->loadFromFile("sprites/helicopter.png");
+    texture->setSmooth(true);
+    textureMap->push_back(texture);
 }
 
 void DrawingManager::draw(Map *map, std::vector<ObjectFirestation*>* firestationsArray) {
@@ -115,23 +120,24 @@ void DrawingManager::draw(Map *map, std::vector<ObjectFirestation*>* firestation
     }
 
     sf::Sprite sprite;
-    for(int k = 0; k < firestationsArray->size(); ++k){
-        ObjectFirestation* firestation = firestationsArray->at(k);
+    for(int k = 0; k < firestationsArray->size(); ++k) {
+        ObjectFirestation *firestation = firestationsArray->at(k);
         int x = firestation->getX() - vx;
         int y = firestation->getY() - vy;
         if (firestation->getActive()) {
             sf::Sprite sprite;
             sprite.setTexture(*textureMap->at(firestation->getTexture()));
-            sprite.setScale(1.0 * tileWidth / sprite.getLocalBounds().width, 1.0 * tileHeight / sprite.getLocalBounds().height);
+            sprite.setScale(1.0 * tileWidth / sprite.getLocalBounds().width,
+                            1.0 * tileHeight / sprite.getLocalBounds().height);
             sprite.setPosition(x * tileWidth, y * tileHeight);
             window->draw(sprite);
         }
 
-        std::vector<ObjectFiretruck*>* objectsFiretrucks = firestation->getFiretrucks();
-        for(ObjectFiretruck* firetruck : *objectsFiretrucks){
+        std::vector<ObjectFiretruck *> *objectsFiretrucks = firestation->getFiretrucks();
+        for (ObjectFiretruck *firetruck : *objectsFiretrucks) {
             if (firetruck->getActive()) {
-                std::vector<sf::Vector2i>* path = firetruck->getPath();
-                if(path != nullptr) {
+                std::vector<sf::Vector2i> *path = firetruck->getPath();
+                if (path != nullptr) {
                     for (sf::Vector2i v : *path) {
                         int pathX = v.x - vx;
                         int pathY = v.y - vy;
@@ -143,13 +149,38 @@ void DrawingManager::draw(Map *map, std::vector<ObjectFirestation*>* firestation
                 }
                 int fx = firetruck->getX() - vx;
                 int fy = firetruck->getY() - vy;
-                if(fx != x || fy != y){
+                if (fx != x || fy != y) {
                     sf::Sprite sprite;
                     sprite.setTexture(*textureMap->at(firetruck->getTexture()));
-                    sprite.setScale(1.0 * tileWidth / sprite.getLocalBounds().width, 1.0 * tileHeight / sprite.getLocalBounds().height);
+                    sprite.setScale(1.0 * tileWidth / sprite.getLocalBounds().width,
+                                    1.0 * tileHeight / sprite.getLocalBounds().height);
                     sprite.setPosition(fx * tileWidth, fy * tileHeight);
                     window->draw(sprite);
                 }
+            }
+        }
+        std::vector<ObjectHelicopter *> *objectsHelicopters = firestation->getHelicopters();
+        for (ObjectHelicopter *helicopter : *objectsHelicopters) {
+            std::vector<sf::Vector2i> *path = helicopter->getPath();
+            if (path != nullptr) {
+                for (sf::Vector2i v : *path) {
+                    int pathX = v.x - vx;
+                    int pathY = v.y - vy;
+                    sf::CircleShape shape(3);
+                    shape.setFillColor(sf::Color::Yellow);
+                    shape.setPosition((pathX + 0.5) * tileWidth - 3, (pathY + 0.5) * tileHeight - 3);
+                    window->draw(shape);
+                }
+            }
+            int fx = helicopter->getX() - vx;
+            int fy = helicopter->getY() - vy;
+            if (fx != x || fy != y) {
+                sf::Sprite sprite;
+                sprite.setTexture(*textureMap->at(helicopter->getTexture()));
+                sprite.setScale(1.0 * tileWidth / sprite.getLocalBounds().width,
+                                1.0 * tileHeight / sprite.getLocalBounds().height);
+                sprite.setPosition(fx * tileWidth, fy * tileHeight);
+                window->draw(sprite);
             }
         }
     }

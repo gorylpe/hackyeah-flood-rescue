@@ -112,7 +112,7 @@ bool Map::changingToWater(Tile* water, Tile* notWater) {
             notWater->setTexture(DrawableObject::TEXTURE::WATER);
             changed = true;
             if (notWater->getTexture() != DrawableObject::TEXTURE::BUILDING) {
-                GameManager::getSingleton().addLoss(10);
+                GameManager::getSingleton().addLoss(15000);
             }
         }
     }

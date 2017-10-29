@@ -23,10 +23,11 @@ protected:
     bool active = true;
     int worth;
 public:
-    Object(OBJECTTYPE _objectType, DrawableObject::TEXTURE _texture, int _x, int _y)
+    Object(OBJECTTYPE _objectType, DrawableObject::TEXTURE _texture, int _x, int _y, int _worth)
     :objectType(_objectType)
     ,x(_x)
-    ,y(_y){
+    ,y(_y)
+    ,worth(_worth){
         setTexture(_texture);
     }
 
