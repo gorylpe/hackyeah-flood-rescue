@@ -36,3 +36,6 @@ The project was inspired by the [Great Flood of 1997](https://en.wikipedia.org/w
 ## Technologies
 C++ & [SFML](https://www.sfml-dev.org/)
 
+## Video
+[![video](http://img.youtube.com/vi/oNdM9fLwWtc/0.jpg)](http://www.youtube.com/watch?v=oNdM9fLwWtc "HackYeah - Flood Rescue")
+
